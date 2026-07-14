@@ -1,38 +1,28 @@
 import { createClient } from '@/lib/supabase/server';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
-export async function GET(request: Request) {
-  const requestUrl = new URL(request.url);
-  const code = requestUrl.searchParams.get('code');
-  const next = requestUrl.searchParams.get('next') ?? '/';
+export async function GET(request: NextRequest) {
+  const { searchParams } = request.nextUrl;
+  const code = searchParams.get('code');
+  const next = searchParams.get('next') ?? '/';
 
-  // Construct production-safe origin dynamically using headers and request info
-  let origin = '';
-  const forwardedProto = request.headers.get('x-forwarded-proto') ?? 'https';
-  const forwardedHost = request.headers.get('x-forwarded-host');
-
-  if (forwardedHost) {
-    origin = `${forwardedProto.endsWith(':') ? forwardedProto.slice(0, -1) : forwardedProto}://${forwardedHost}`;
-  } else {
-    if (requestUrl.host.includes('localhost')) {
-      origin = requestUrl.origin;
-    } else {
-      origin = requestUrl.origin.replace('http://', 'https://');
-    }
-  }
-
-  // Fail-safe fallback in production environment
-  if ((!origin || origin.includes('localhost')) && process.env.NODE_ENV === 'production') {
-    origin = process.env.NEXT_PUBLIC_SITE_URL || 'https://yuktify-v65g.vercel.app';
-  }
+  // Build origin: prefer x-forwarded headers set by Vercel/proxies, fall back to nextUrl
+  const proto = request.headers.get('x-forwarded-proto') ?? request.nextUrl.protocol.replace(':', '');
+  const host = request.headers.get('x-forwarded-host') ?? request.nextUrl.host;
+  const origin = `${proto}://${host}`;
 
   if (code) {
     const supabase = await createClient();
     const { error } = await supabase.auth.exchangeCodeForSession(code);
     if (!error) {
+      // Successfully exchanged — redirect to app
       return NextResponse.redirect(`${origin}${next}`);
     }
+    // Code exchange failed — redirect to auth with error message
+    console.error('[auth/callback] exchangeCodeForSession failed');
+    return NextResponse.redirect(`${origin}/auth?error=oauth_exchange_failed`);
   }
 
-  return NextResponse.redirect(`${origin}/auth?error=Authentication%20failed`);
+  // No code present — redirect to auth
+  return NextResponse.redirect(`${origin}/auth?error=no_code`);
 }

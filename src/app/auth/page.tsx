@@ -45,11 +45,19 @@ export default function AuthPage() {
 
   const handleGoogleSignIn = async () => {
     try {
-      const origin = (typeof window !== 'undefined' ? window.location.origin : '') || process.env.NEXT_PUBLIC_SITE_URL || 'https://yuktify-v65g.vercel.app';
+      // window.location.origin is always correct on the client:
+      // - localhost:3000 in development
+      // - https://yuktify-v65g.vercel.app in production
+      // Never hardcode a URL here.
+      const redirectTo = `${window.location.origin}/auth/callback`;
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: `${origin}/auth/callback`,
+          redirectTo,
+          queryParams: {
+            // Force account picker so user can choose the right account
+            prompt: 'select_account',
+          },
         },
       });
       if (error) throw error;

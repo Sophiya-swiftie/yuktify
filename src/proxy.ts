@@ -48,7 +48,9 @@ export async function proxy(request: NextRequest) {
   }
 
   // Redirect /auth to / if user is already signed in
-  if (path.startsWith('/auth') && user) {
+  // IMPORTANT: Never intercept /auth/callback - it must always run to exchange the OAuth code
+  const isAuthPage = path === '/auth';
+  if (isAuthPage && user) {
     return NextResponse.redirect(new URL('/', request.url));
   }
 
