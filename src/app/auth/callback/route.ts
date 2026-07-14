@@ -6,11 +6,25 @@ export async function GET(request: Request) {
   const code = requestUrl.searchParams.get('code');
   const next = requestUrl.searchParams.get('next') ?? '/';
 
-  // Construct production-safe origin dynamically using request headers
-  const protocol = request.headers.get('x-forwarded-proto') ?? 'http';
-  // Use host from headers (e.g. localhost:3001, yuktify-y65g.vercel.app) or fallback to request URL host
-  const host = request.headers.get('x-forwarded-host') ?? requestUrl.host;
-  const origin = `${protocol.endsWith(':') ? protocol.slice(0, -1) : protocol}://${host}`;
+  // Construct production-safe origin dynamically using headers and request info
+  let origin = '';
+  const forwardedProto = request.headers.get('x-forwarded-proto') ?? 'https';
+  const forwardedHost = request.headers.get('x-forwarded-host');
+
+  if (forwardedHost) {
+    origin = `${forwardedProto.endsWith(':') ? forwardedProto.slice(0, -1) : forwardedProto}://${forwardedHost}`;
+  } else {
+    if (requestUrl.host.includes('localhost')) {
+      origin = requestUrl.origin;
+    } else {
+      origin = requestUrl.origin.replace('http://', 'https://');
+    }
+  }
+
+  // Fail-safe fallback in production environment
+  if ((!origin || origin.includes('localhost')) && process.env.NODE_ENV === 'production') {
+    origin = process.env.NEXT_PUBLIC_SITE_URL || 'https://yuktify-v65g.vercel.app';
+  }
 
   if (code) {
     const supabase = await createClient();
