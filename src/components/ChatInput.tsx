@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, Sparkles } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 
 interface ChatInputProps {
   onSendMessage: (message: string) => void;
@@ -60,9 +60,11 @@ export const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, isLoading }
               type="submit"
               disabled={!input.trim() || isLoading}
               suppressHydrationWarning
-              className="mb-2 p-2.5 rounded-xl bg-accent-gradient text-white disabled:opacity-20 disabled:grayscale transition-all hover:scale-105 active:scale-95 shadow-lg shadow-accent-violet/20"
+              className="mb-2 p-2.5 rounded-xl bg-accent-gradient text-white disabled:opacity-20 disabled:grayscale transition-all hover:scale-105 active:scale-95 shadow-lg shadow-accent-violet/20 cursor-pointer"
             >
-              <Send size={20} />
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className="w-5 h-5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+              </svg>
             </button>
           </div>
         </form>

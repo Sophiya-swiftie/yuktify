@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
-import { Terminal, Eye, EyeOff, Loader2, AlertCircle } from 'lucide-react';
+import { Eye, EyeOff, Loader2, AlertCircle } from 'lucide-react';
 
 export default function ResetPasswordPage() {
   const [password, setPassword] = useState('');
@@ -61,8 +61,25 @@ export default function ResetPasswordPage() {
     <div className="flex min-h-screen items-center justify-center bg-background p-6">
       <div className="w-full max-w-md glass-card p-8 border border-border/80 shadow-2xl relative">
         <div className="flex items-center gap-2 justify-center mb-6">
-          <div className="p-2 rounded-xl bg-accent-gradient">
-            <Terminal size={18} className="text-white" />
+          <div className="w-8 h-8 shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" className="w-full h-full">
+              <defs>
+                <linearGradient id="purple-blue-reset" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#7C3AED" />
+                  <stop offset="100%" stopColor="#3B82F6" />
+                </linearGradient>
+                <linearGradient id="cyan-magenta-reset" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#22D3EE" />
+                  <stop offset="100%" stopColor="#A855F7" />
+                </linearGradient>
+              </defs>
+              <path d="M32 24 L18 38 L32 52" stroke="url(#purple-blue-reset)" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M18 38 L50 62" stroke="url(#purple-blue-reset)" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M68 24 L82 38 L68 52" stroke="url(#cyan-magenta-reset)" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M82 38 L50 62" stroke="url(#cyan-magenta-reset)" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M50 62 L50 86" stroke="url(#purple-blue-reset)" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+              <circle cx="50" cy="62" r="5" fill="#FFFFFF" />
+            </svg>
           </div>
           <span className="text-lg font-bold text-white uppercase tracking-wider">YUKTIFY</span>
         </div>

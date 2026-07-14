@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { SearchBar } from './SearchBar';
 import { CompanyAccordion } from './CompanyAccordion';
 import { searchCompanies } from '@/data/companies';
-import { PanelLeftClose, PanelLeftOpen, Terminal, X } from 'lucide-react';
+import { PanelLeftClose, PanelLeftOpen, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Role } from '@/types';
 import { useAuth } from '@/providers/AuthProvider';
@@ -49,11 +49,28 @@ export const Sidebar: React.FC<SidebarProps> = ({
         <div className="flex items-center justify-between p-6">
           {/* Brand Logo (Visible on desktop when expanded, or always on mobile) */}
           {(!isCollapsed || mobileSidebarOpen) && (
-            <div className="flex items-center gap-2">
-              <div className="p-2 rounded-lg bg-accent-gradient shadow-lg">
-                <Terminal size={18} className="text-white" />
+            <div className="flex items-center gap-2 group">
+              <div className="w-8 h-8 shrink-0 transition-transform duration-300 group-hover:scale-110">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" className="w-full h-full">
+                  <defs>
+                    <linearGradient id="purple-blue-sidebar" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#7C3AED" />
+                      <stop offset="100%" stopColor="#3B82F6" />
+                    </linearGradient>
+                    <linearGradient id="cyan-magenta-sidebar" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#22D3EE" />
+                      <stop offset="100%" stopColor="#A855F7" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M32 24 L18 38 L32 52" stroke="url(#purple-blue-sidebar)" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M18 38 L50 62" stroke="url(#purple-blue-sidebar)" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M68 24 L82 38 L68 52" stroke="url(#cyan-magenta-sidebar)" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M82 38 L50 62" stroke="url(#cyan-magenta-sidebar)" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M50 62 L50 86" stroke="url(#purple-blue-sidebar)" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+                  <circle cx="50" cy="62" r="5" fill="#FFFFFF" />
+                </svg>
               </div>
-              <span className="text-lg font-bold tracking-tight text-white">YUKTIFY</span>
+              <span className="text-lg font-black tracking-wider text-white uppercase">YUKTIFY</span>
             </div>
           )}
 

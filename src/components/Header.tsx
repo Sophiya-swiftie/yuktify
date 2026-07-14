@@ -64,11 +64,33 @@ export const Header: React.FC = () => {
           <Menu size={20} />
         </button>
 
-        <Link href="/" className="flex items-center">
-          <h1 className="text-xl font-black accent-text">YUKTIFY</h1>
+        <Link href="/" className="flex items-center gap-3 group">
+          {/* Y Logo */}
+          <div className="w-8 h-8 shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" className="w-full h-full">
+              <defs>
+                <linearGradient id="purple-blue-header" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#7C3AED" />
+                  <stop offset="100%" stopColor="#3B82F6" />
+                </linearGradient>
+                <linearGradient id="cyan-magenta-header" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#22D3EE" />
+                  <stop offset="100%" stopColor="#A855F7" />
+                </linearGradient>
+              </defs>
+              <path d="M32 24 L18 38 L32 52" stroke="url(#purple-blue-header)" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M18 38 L50 62" stroke="url(#purple-blue-header)" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M68 24 L82 38 L68 52" stroke="url(#cyan-magenta-header)" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M82 38 L50 62" stroke="url(#cyan-magenta-header)" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M50 62 L50 86" stroke="url(#purple-blue-header)" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+              <circle cx="50" cy="62" r="5" fill="#FFFFFF" />
+            </svg>
+          </div>
+          <div className="flex flex-col">
+            <span className="text-md font-black tracking-wider text-white uppercase group-hover:text-accent-violet transition-colors leading-none mb-1">YUKTIFY</span>
+            <span className="text-[9px] font-bold text-white/40 tracking-widest uppercase leading-none whitespace-nowrap">Master Coding. Ace Interviews.</span>
+          </div>
         </Link>
-        <div className="hidden h-6 w-[1px] bg-border sm:block"></div>
-        <p className="hidden text-sm text-white/50 sm:block font-medium">Master Coding and Interview</p>
       </div>
       
       <div className="flex items-center gap-4">

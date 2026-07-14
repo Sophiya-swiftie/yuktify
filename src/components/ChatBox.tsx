@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import { ChatMessage } from '@/types';
-import { Terminal, User, Bot, Loader2 } from 'lucide-react';
+import { User, Bot } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import ReactMarkdown from 'react-markdown';
 
@@ -52,8 +52,25 @@ export const ChatBox: React.FC<ChatBoxProps> = ({ messages, isLoading }) => {
   if (messages.length === 0 && !isLoading) {
     return (
       <div className="flex flex-col items-center justify-center py-20 px-6 text-center opacity-40">
-        <div className="w-16 h-16 rounded-2xl bg-surface border border-border flex items-center justify-center mb-4">
-          <Terminal size={32} />
+        <div className="w-16 h-16 rounded-2xl bg-surface border border-border flex items-center justify-center mb-4 p-3">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" className="w-full h-full">
+            <defs>
+              <linearGradient id="purple-blue-welcome" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#7C3AED" />
+                <stop offset="100%" stopColor="#3B82F6" />
+              </linearGradient>
+              <linearGradient id="cyan-magenta-welcome" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#22D3EE" />
+                <stop offset="100%" stopColor="#A855F7" />
+              </linearGradient>
+            </defs>
+            <path d="M32 24 L18 38 L32 52" stroke="url(#purple-blue-welcome)" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M18 38 L50 62" stroke="url(#purple-blue-welcome)" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M68 24 L82 38 L68 52" stroke="url(#cyan-magenta-welcome)" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M82 38 L50 62" stroke="url(#cyan-magenta-welcome)" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M50 62 L50 86" stroke="url(#purple-blue-welcome)" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+            <circle cx="50" cy="62" r="5" fill="#FFFFFF" />
+          </svg>
         </div>
         <h3 className="text-lg font-bold text-white mb-2">Welcome to YUKTIFY Assistant</h3>
         <p className="max-w-sm text-sm">
@@ -96,7 +113,7 @@ export const ChatBox: React.FC<ChatBoxProps> = ({ messages, isLoading }) => {
       {isLoading && (
         <div className="flex gap-4 p-4 rounded-2xl bg-accent-violet/5 self-start max-w-[90%] animate-pulse">
           <div className="w-8 h-8 rounded-lg bg-accent-gradient text-white flex items-center justify-center mt-1">
-            <Loader2 size={16} className="animate-spin" />
+            <div className="w-4.5 h-4.5 rounded-full border-2 border-white/20 border-t-white animate-spin" />
           </div>
           <div className="flex-1">
             <div className="text-[10px] font-bold uppercase tracking-widest text-white/30 mb-1">YUKTIFY AI</div>

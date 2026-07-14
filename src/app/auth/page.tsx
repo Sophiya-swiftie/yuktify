@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
-import { Terminal, Eye, EyeOff, Loader2, AlertCircle, ArrowLeft } from 'lucide-react';
+import { Eye, EyeOff, Loader2, AlertCircle, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import { useAuth } from '@/providers/AuthProvider';
 
@@ -151,15 +151,35 @@ export default function AuthPage() {
       {/* LEFT SIDE (Branding & Logo) */}
       <div className="relative hidden w-1/2 flex-col justify-between bg-black/40 p-12 lg:flex border-r border-border overflow-hidden">
         {/* Violet-to-cyan glow backdrops */}
-        <div className="absolute -left-1/4 -top-1/4 h-[80%] w-[80%] rounded-full bg-accent-violet/10 blur-[150px]" />
-        <div className="absolute -bottom-1/4 -right-1/4 h-[80%] w-[80%] rounded-full bg-accent-cyan/5 blur-[150px]" />
+        <div className="absolute -left-1/4 -top-1/4 h-[80%] w-[80%] rounded-full bg-accent-violet/15 blur-[150px] animate-pulse" style={{ animationDuration: '8s' }} />
+        <div className="absolute -bottom-1/4 -right-1/4 h-[80%] w-[80%] rounded-full bg-accent-cyan/10 blur-[150px] animate-pulse" style={{ animationDuration: '12s' }} />
 
         {/* Top Header */}
         <div className="flex items-center gap-3 z-10">
-          <div className="p-2.5 rounded-xl bg-accent-gradient shadow-lg">
-            <Terminal size={22} className="text-white" />
+          <div className="w-10 h-10 shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" className="w-full h-full">
+              <defs>
+                <linearGradient id="purple-blue-auth" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#7C3AED" />
+                  <stop offset="100%" stopColor="#3B82F6" />
+                </linearGradient>
+                <linearGradient id="cyan-magenta-auth" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#22D3EE" />
+                  <stop offset="100%" stopColor="#A855F7" />
+                </linearGradient>
+              </defs>
+              <path d="M32 24 L18 38 L32 52" stroke="url(#purple-blue-auth)" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M18 38 L50 62" stroke="url(#purple-blue-auth)" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M68 24 L82 38 L68 52" stroke="url(#cyan-magenta-auth)" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M82 38 L50 62" stroke="url(#cyan-magenta-auth)" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M50 62 L50 86" stroke="url(#purple-blue-auth)" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+              <circle cx="50" cy="62" r="5" fill="#FFFFFF" />
+            </svg>
           </div>
-          <span className="text-xl font-bold tracking-tight text-white uppercase">YUKTIFY</span>
+          <div className="flex flex-col">
+            <span className="text-xl font-black tracking-wider text-white uppercase leading-none mb-1">YUKTIFY</span>
+            <span className="text-[10px] font-bold text-white/40 tracking-widest uppercase leading-none">Master Coding. Ace Interviews.</span>
+          </div>
         </div>
 
         {/* Content */}
@@ -180,11 +200,37 @@ export default function AuthPage() {
       </div>
 
       {/* RIGHT SIDE (Authentication Card) */}
-      <div className="flex w-full items-center justify-center p-6 lg:w-1/2 relative">
+      <div className="flex w-full items-center justify-center p-6 lg:w-1/2 relative overflow-hidden">
         {/* Glow backdrop for mobile */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[300px] w-[300px] rounded-full bg-accent-violet/5 blur-[100px] lg:hidden" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[350px] w-[350px] rounded-full bg-accent-violet/10 blur-[120px] animate-pulse" />
         
         <div className="w-full max-w-md glass-card p-8 border border-border/80 shadow-2xl relative z-10">
+          {/* Logo visible on mobile only */}
+          <div className="flex flex-col items-center justify-center mb-8 lg:hidden">
+            <div className="w-12 h-12 mb-3">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" className="w-full h-full">
+                <defs>
+                  <linearGradient id="purple-blue-auth-mb" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#7C3AED" />
+                    <stop offset="100%" stopColor="#3B82F6" />
+                  </linearGradient>
+                  <linearGradient id="cyan-magenta-auth-mb" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#22D3EE" />
+                    <stop offset="100%" stopColor="#A855F7" />
+                  </linearGradient>
+                </defs>
+                <path d="M32 24 L18 38 L32 52" stroke="url(#purple-blue-auth-mb)" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M18 38 L50 62" stroke="url(#purple-blue-auth-mb)" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M68 24 L82 38 L68 52" stroke="url(#cyan-magenta-auth-mb)" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M82 38 L50 62" stroke="url(#cyan-magenta-auth-mb)" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M50 62 L50 86" stroke="url(#purple-blue-auth-mb)" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="50" cy="62" r="5" fill="#FFFFFF" />
+              </svg>
+            </div>
+            <span className="text-2xl font-black tracking-wider text-white uppercase mb-1">YUKTIFY</span>
+            <span className="text-[10px] font-bold text-white/40 tracking-widest uppercase text-center">Master Coding. Ace Interviews.</span>
+          </div>
+
           {/* Tabs */}
           <div className="flex border-b border-border mb-6">
             <button

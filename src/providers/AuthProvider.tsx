@@ -368,7 +368,37 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         setMobileSidebarOpen,
       }}
     >
-      {children}
+      {loading ? (
+        <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#09090B] text-white">
+          <div className="relative w-24 h-24 mb-6">
+            {/* Pulsing Gradient glow behind logo */}
+            <div className="absolute inset-0 rounded-full bg-accent-violet/20 blur-[20px] animate-pulse" style={{ animationDuration: '2s' }} />
+            
+            {/* Geometric Y SVG logo with animated glow and pulse */}
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" className="w-full h-full relative z-10 animate-pulse" style={{ animationDuration: '2s' }}>
+              <defs>
+                <linearGradient id="purple-blue-loader" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#7C3AED" />
+                  <stop offset="100%" stopColor="#3B82F6" />
+                </linearGradient>
+                <linearGradient id="cyan-magenta-loader" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#22D3EE" />
+                  <stop offset="100%" stopColor="#A855F7" />
+                </linearGradient>
+              </defs>
+              <path d="M32 24 L18 38 L32 52" stroke="url(#purple-blue-loader)" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M18 38 L50 62" stroke="url(#purple-blue-loader)" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M68 24 L82 38 L68 52" stroke="url(#cyan-magenta-loader)" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M82 38 L50 62" stroke="url(#cyan-magenta-loader)" stroke-width="8" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M50 62 L50 86" stroke="url(#purple-blue-loader)" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+              <circle cx="50" cy="62" r="5" fill="#FFFFFF" />
+            </svg>
+          </div>
+          <p className="text-sm font-bold text-white/40 tracking-widest uppercase animate-pulse" style={{ animationDuration: '1.5s' }}>Loading YUKTIFY...</p>
+        </div>
+      ) : (
+        children
+      )}
     </AuthContext.Provider>
   );
 };
