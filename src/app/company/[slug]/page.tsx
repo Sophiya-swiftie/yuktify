@@ -117,7 +117,7 @@ export default function CompanyPage() {
       <main className="flex-1 flex flex-col h-full overflow-hidden relative">
         <Header />
         
-        <div className="flex-1 overflow-y-auto scrollbar-custom px-6 pb-32">
+        <div className="flex-1 overflow-y-auto scrollbar-custom px-4 md:px-6 pb-32">
           <div className="max-w-4xl mx-auto pt-8">
             
             {/* Breadcrumbs */}
@@ -130,22 +130,22 @@ export default function CompanyPage() {
             </div>
 
             {/* Company Header */}
-            <div className="flex items-end gap-6 mb-12">
+            <div className="flex flex-col sm:flex-row sm:items-end gap-4 sm:gap-6 mb-8 sm:mb-12">
               <div 
-                className="w-20 h-20 rounded-3xl flex items-center justify-center text-white text-3xl font-black shadow-2xl shadow-accent-violet/20"
+                className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl sm:rounded-3xl flex items-center justify-center text-white text-2xl sm:text-3xl font-black shadow-2xl shadow-accent-violet/20"
                 style={{ backgroundColor: company.color }}
               >
                 {company.name[0]}
               </div>
-              <div className="pb-2">
-                <h1 className="text-4xl font-black text-white mb-1 tracking-tight">{company.name}</h1>
-                <p className="text-white/40 font-medium">{role} Interview Preparation</p>
+              <div className="pb-1">
+                <h1 className="text-3xl sm:text-4xl font-black text-white mb-1 tracking-tight">{company.name}</h1>
+                <p className="text-sm sm:text-base text-white/40 font-medium">{role} Interview Preparation</p>
               </div>
             </div>
 
             {/* Filters Row */}
-            <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
-              <div className="relative w-full md:w-72">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+              <div className="relative w-full sm:w-72">
                 <SearchIcon size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-white/30" />
                 <input 
                   type="text" 
@@ -156,15 +156,15 @@ export default function CompanyPage() {
                 />
               </div>
               
-              <div className="flex items-center gap-2">
-                <div className="flex p-1 rounded-xl bg-surface border border-border">
+              <div className="flex items-center gap-2 w-full sm:w-auto">
+                <div className="flex p-1 rounded-xl bg-surface border border-border w-full sm:w-auto justify-between sm:justify-start">
                   {(['All', 'Easy', 'Medium', 'Hard'] as const).map((diff) => (
                     <button
                       key={diff}
                       onClick={() => setDifficultyFilter(diff)}
                       suppressHydrationWarning
                       className={cn(
-                        "px-4 py-1.5 rounded-lg text-xs font-semibold transition-all",
+                        "px-3.5 sm:px-4 py-1.5 rounded-lg text-xs font-semibold transition-all flex-1 sm:flex-initial",
                         difficultyFilter === diff 
                           ? "bg-accent-violet text-white shadow-lg shadow-accent-violet/20" 
                           : "text-white/40 hover:text-white"

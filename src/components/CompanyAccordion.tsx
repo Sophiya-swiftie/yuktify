@@ -5,6 +5,7 @@ import { ChevronDown, ChevronRight, Briefcase, Layout, Database } from 'lucide-r
 import { Company, Role } from '@/types';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
+import { useAuth } from '@/providers/AuthProvider';
 
 interface CompanyAccordionProps {
   company: Company;
@@ -18,6 +19,7 @@ export const CompanyAccordion: React.FC<CompanyAccordionProps> = ({
   isActive 
 }) => {
   const [isOpen, setIsOpen] = useState(isActive);
+  const { setMobileSidebarOpen } = useAuth();
 
   const roles: { id: Role, icon: React.ReactNode, label: string }[] = [
     { id: 'SDE', icon: <Briefcase size={14} />, label: 'SDE' },
@@ -51,6 +53,7 @@ export const CompanyAccordion: React.FC<CompanyAccordionProps> = ({
             <Link
               key={role.id}
               href={`/company/${company.slug}?role=${role.id}`}
+              onClick={() => setMobileSidebarOpen(false)}
               className={cn(
                 "flex items-center gap-2 px-3 py-1.5 rounded-md text-xs transition-all",
                 activeRole === role.id 

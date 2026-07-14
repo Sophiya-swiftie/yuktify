@@ -1,14 +1,14 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Bookmark, LogOut, LayoutDashboard, LogIn, ChevronDown } from 'lucide-react';
+import { Bookmark, LogOut, LayoutDashboard, LogIn, ChevronDown, Menu } from 'lucide-react';
 import { useAuth } from '@/providers/AuthProvider';
 import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 export const Header: React.FC = () => {
-  const { user, profile, bookmarks, openAuthModal } = useAuth();
+  const { user, profile, bookmarks, openAuthModal, setMobileSidebarOpen } = useAuth();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const supabase = createClient();
@@ -54,6 +54,16 @@ export const Header: React.FC = () => {
   return (
     <header className="sticky top-0 z-30 flex h-16 w-full items-center justify-between border-b border-border bg-background/80 px-6 backdrop-blur-md">
       <div className="flex items-center gap-4">
+        {/* Hamburger Menu Toggle on Mobile */}
+        <button 
+          onClick={() => setMobileSidebarOpen(true)}
+          suppressHydrationWarning
+          className="p-2 rounded-lg text-white/60 hover:bg-surface hover:text-white transition-colors cursor-pointer md:hidden"
+          title="Open Menu"
+        >
+          <Menu size={20} />
+        </button>
+
         <Link href="/" className="flex items-center">
           <h1 className="text-xl font-black accent-text">YUKTIFY</h1>
         </Link>

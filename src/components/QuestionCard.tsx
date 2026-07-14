@@ -283,13 +283,15 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({ question }) => {
                   <div className="px-4 py-2 bg-surface/50 border-b border-border text-xs font-medium text-white/60">
                     {question.domainSolution.languageLabel}
                   </div>
-                  <SyntaxHighlighter 
-                    language={question.domainSolution.language}
-                    style={atomDark}
-                    customStyle={{ margin: 0, padding: '1.5rem', fontSize: '0.875rem' }}
-                  >
-                    {question.domainSolution.code}
-                  </SyntaxHighlighter>
+                  <div className="max-w-full overflow-x-auto">
+                    <SyntaxHighlighter 
+                      language={question.domainSolution.language}
+                      style={atomDark}
+                      customStyle={{ margin: 0, padding: '1.5rem', fontSize: '0.875rem' }}
+                    >
+                      {question.domainSolution.code}
+                    </SyntaxHighlighter>
+                  </div>
                 </div>
               )}
 
@@ -334,13 +336,15 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({ question }) => {
                   </div>
                   
                   {/* Code Viewer */}
-                  <SyntaxHighlighter 
-                    language={selectedLang}
-                    style={atomDark}
-                    customStyle={{ margin: 0, padding: '1.5rem', fontSize: '0.875rem', backgroundColor: 'rgba(0,0,0,0.2)' }}
-                  >
-                    {question.solutions[selectedLang]}
-                  </SyntaxHighlighter>
+                  <div className="max-w-full overflow-x-auto">
+                    <SyntaxHighlighter 
+                      language={selectedLang}
+                      style={atomDark}
+                      customStyle={{ margin: 0, padding: '1.5rem', fontSize: '0.875rem', backgroundColor: 'rgba(0,0,0,0.2)' }}
+                    >
+                      {question.solutions[selectedLang]}
+                    </SyntaxHighlighter>
+                  </div>
                 </div>
               )}
             </div>

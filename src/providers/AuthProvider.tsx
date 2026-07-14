@@ -3,6 +3,7 @@
 import React, { createContext, useContext, useEffect, useState, useCallback } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createClient } from '@/lib/supabase/client';
+import { usePathname } from 'next/navigation';
 
 export type UserProgressStatus = 'not_started' | 'attempted' | 'solved' | 'revision';
 
@@ -30,6 +31,8 @@ interface AuthContextType {
   openAuthModal: (message?: string) => void;
   closeAuthModal: () => void;
   isSupabaseConfigured: boolean;
+  mobileSidebarOpen: boolean;
+  setMobileSidebarOpen: (open: boolean) => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -45,6 +48,30 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   // Auth modal blocker state
   const [authModalOpen, setAuthModalOpen] = useState(false);
   const [authModalMessage, setAuthModalMessage] = useState('');
+
+  // Mobile sidebar drawer state
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+  const pathname = usePathname();
+
+  // Auto-close mobile drawer when pathname update
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setMobileSidebarOpen(false);
+    }, 0);
+    return () => clearTimeout(timer);
+  }, [pathname]);
+
+  // Lock background body scroll when mobile drawer is open
+  useEffect(() => {
+    if (mobileSidebarOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileSidebarOpen]);
 
   const supabase = createClient();
 
@@ -336,7 +363,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         isSupabaseConfigured: Boolean(
           process.env.NEXT_PUBLIC_SUPABASE_URL && 
           process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-        )
+        ),
+        mobileSidebarOpen,
+        setMobileSidebarOpen,
       }}
     >
       {children}

@@ -98,7 +98,7 @@ export default function ProfilePage() {
       <main className="flex-1 flex flex-col h-full overflow-hidden relative">
         <Header />
 
-        <div className="flex-1 overflow-y-auto scrollbar-custom px-6 pb-32">
+        <div className="flex-1 overflow-y-auto scrollbar-custom px-4 md:px-6 pb-32">
           <div className="max-w-4xl mx-auto pt-8">
             <h1 className="text-3xl font-black text-white mb-8 tracking-tight">Your Dashboard</h1>
 

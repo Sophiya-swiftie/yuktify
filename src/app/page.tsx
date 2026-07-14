@@ -74,19 +74,19 @@ export default function Home() {
         <Header />
         
         <div className="flex-1 overflow-y-auto scrollbar-custom relative">
-          <div className="max-w-4xl mx-auto px-6 pt-12 pb-32">
+          <div className="max-w-4xl mx-auto px-4 md:px-6 pt-8 md:pt-12 pb-32">
             
             {messages.length === 0 ? (
               <div className="animate-fade-in">
-                <div className="text-center mb-16">
+                <div className="text-center mb-10 md:mb-16">
                   <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent-violet/10 border border-accent-violet/20 text-accent-violet text-xs font-bold uppercase tracking-widest mb-6">
                     <Sparkles size={14} />
                     The Future of Interview Prep
                   </div>
-                  <h1 className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight">
+                  <h1 className="text-4xl sm:text-5xl md:text-7xl font-black text-white mb-6 tracking-tight">
                     Master <span className="accent-text">Coding and Interview.</span>
                   </h1>
-                  <p className="text-lg text-white/40 max-w-2xl mx-auto leading-relaxed">
+                  <p className="text-sm sm:text-base md:text-lg text-white/40 max-w-2xl mx-auto leading-relaxed">
                     YUKTIFY combines curated high-frequency company questions with state-of-the-art AI to help you land your dream job.
                   </p>
                 </div>
