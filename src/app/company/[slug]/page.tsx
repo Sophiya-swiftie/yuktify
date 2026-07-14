@@ -10,9 +10,10 @@ import { ChatInput } from '@/components/ChatInput';
 import { getCompanyBySlug } from '@/data/companies';
 import { getQuestionsByCompany } from '@/data/questions';
 import { ChatMessage, Role } from '@/types';
-import { addRecentlyViewed, cn } from '@/lib/utils';
+import { cn } from '@/lib/utils';
 import { ChevronLeft, Search as SearchIcon } from 'lucide-react';
 import Link from 'next/link';
+import { useAuth } from '@/providers/AuthProvider';
 
 export default function CompanyPage() {
   const { slug } = useParams();
@@ -24,12 +25,13 @@ export default function CompanyPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [difficultyFilter, setDifficultyFilter] = useState<'All' | 'Easy' | 'Medium' | 'Hard'>('All');
+  const { addRecentlyViewed } = useAuth();
 
   useEffect(() => {
     if (company) {
       addRecentlyViewed(company.slug);
     }
-  }, [company]);
+  }, [company, addRecentlyViewed]);
 
   if (!company) {
     return (

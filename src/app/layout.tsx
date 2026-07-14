@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { AuthProvider } from "@/providers/AuthProvider";
+import { AuthRequiredModal } from "@/components/auth/AuthRequiredModal";
 
 export const metadata: Metadata = {
   title: "YUKTIFY | AI-Powered Interview Preparation Platform",
@@ -15,7 +17,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <body className="font-sans antialiased bg-background text-foreground scrollbar-custom">
-        {children}
+        <AuthProvider>
+          {children}
+          <AuthRequiredModal />
+        </AuthProvider>
       </body>
     </html>
   );

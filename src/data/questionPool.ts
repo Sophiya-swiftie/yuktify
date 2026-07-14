@@ -1,88 +1,93 @@
-import { Question } from '@/types';
+import { Question, Difficulty } from '@/types';
+import { sdeSolutions1 } from './solutions/sde-batch1';
+import { sdeSolutions2 } from './solutions/sde-batch2';
+import { sdeSolutions3 } from './solutions/sde-batch3';
+import { sdeSolutions4 } from './solutions/sde-batch4';
+import { sdeSolutions5 } from './solutions/sde-batch5';
+import { frontendQuestions, backendQuestions } from './solutions/frontend-backend';
 
-// Pool of 100 SDE (DSA) Questions
-export const sdePool: Partial<Question>[] = [
-  { title: 'Two Sum', difficulty: 'Easy', tags: ['Array', 'Hash Table'], leetcodeLink: 'https://leetcode.com/problems/two-sum/' },
-  { title: 'Longest Substring Without Repeating Characters', difficulty: 'Medium', tags: ['String', 'Sliding Window'], leetcodeLink: 'https://leetcode.com/problems/longest-substring-without-repeating-characters/' },
-  { title: 'Median of Two Sorted Arrays', difficulty: 'Hard', tags: ['Array', 'Binary Search'], leetcodeLink: 'https://leetcode.com/problems/median-of-two-sorted-arrays/' },
-  { title: 'Longest Palindromic Substring', difficulty: 'Medium', tags: ['String', 'DP'], leetcodeLink: 'https://leetcode.com/problems/longest-palindromic-substring/' },
-  { title: 'Container With Most Water', difficulty: 'Medium', tags: ['Array', 'Two Pointers'], leetcodeLink: 'https://leetcode.com/problems/container-with-most-water/' },
-  { title: '3Sum', difficulty: 'Medium', tags: ['Array', 'Two Pointers'], leetcodeLink: 'https://leetcode.com/problems/3sum/' },
-  { title: 'Letter Combinations of a Phone Number', difficulty: 'Medium', tags: ['String', 'Backtracking'], leetcodeLink: 'https://leetcode.com/problems/letter-combinations-of-a-phone-number/' },
-  { title: 'Remove Nth Node From End of List', difficulty: 'Medium', tags: ['Linked List', 'Two Pointers'], leetcodeLink: 'https://leetcode.com/problems/remove-nth-node-from-end-of-list/' },
-  { title: 'Valid Parentheses', difficulty: 'Easy', tags: ['String', 'Stack'], leetcodeLink: 'https://leetcode.com/problems/valid-parentheses/' },
-  { title: 'Merge Two Sorted Lists', difficulty: 'Easy', tags: ['Linked List'], leetcodeLink: 'https://leetcode.com/problems/merge-two-sorted-lists/' },
-  { title: 'Merge k Sorted Lists', difficulty: 'Hard', tags: ['Linked List', 'Heap'], leetcodeLink: 'https://leetcode.com/problems/merge-k-sorted-lists/' },
-  { title: 'Search in Rotated Sorted Array', difficulty: 'Medium', tags: ['Array', 'Binary Search'], leetcodeLink: 'https://leetcode.com/problems/search-in-rotated-sorted-array/' },
-  { title: 'Combination Sum', difficulty: 'Medium', tags: ['Array', 'Backtracking'], leetcodeLink: 'https://leetcode.com/problems/combination-sum/' },
-  { title: 'First Missing Positive', difficulty: 'Hard', tags: ['Array', 'Hash Table'], leetcodeLink: 'https://leetcode.com/problems/first-missing-positive/' },
-  { title: 'Trapping Rain Water', difficulty: 'Hard', tags: ['Array', 'Two Pointers', 'Stack'], leetcodeLink: 'https://leetcode.com/problems/trapping-rain-water/' },
-  { title: 'Group Anagrams', difficulty: 'Medium', tags: ['Array', 'String', 'Hash Table'], leetcodeLink: 'https://leetcode.com/problems/group-anagrams/' },
-  { title: 'Maximum Subarray', difficulty: 'Medium', tags: ['Array', 'DP'], leetcodeLink: 'https://leetcode.com/problems/maximum-subarray/' },
-  { title: 'Spiral Matrix', difficulty: 'Medium', tags: ['Array'], leetcodeLink: 'https://leetcode.com/problems/spiral-matrix/' },
-  { title: 'Jump Game', difficulty: 'Medium', tags: ['Array', 'Greedy'], leetcodeLink: 'https://leetcode.com/problems/jump-game/' },
-  { title: 'Merge Intervals', difficulty: 'Medium', tags: ['Array', 'Sorting'], leetcodeLink: 'https://leetcode.com/problems/merge-intervals/' },
-  { title: 'Insert Interval', difficulty: 'Medium', tags: ['Array'], leetcodeLink: 'https://leetcode.com/problems/insert-interval/' },
-  { title: 'Unique Paths', difficulty: 'Medium', tags: ['DP'], leetcodeLink: 'https://leetcode.com/problems/unique-paths/' },
-  { title: 'Climbing Stairs', difficulty: 'Easy', tags: ['DP'], leetcodeLink: 'https://leetcode.com/problems/climbing-stairs/' },
-  { title: 'Set Matrix Zeroes', difficulty: 'Medium', tags: ['Array'], leetcodeLink: 'https://leetcode.com/problems/set-matrix-zeroes/' },
-  { title: 'Search a 2D Matrix', difficulty: 'Medium', tags: ['Array', 'Binary Search'], leetcodeLink: 'https://leetcode.com/problems/search-a-2d-matrix/' },
-  { title: 'Sort Colors', difficulty: 'Medium', tags: ['Array', 'Two Pointers', 'Sorting'], leetcodeLink: 'https://leetcode.com/problems/sort-colors/' },
-  { title: 'Minimum Window Substring', difficulty: 'Hard', tags: ['String', 'Sliding Window'], leetcodeLink: 'https://leetcode.com/problems/minimum-window-substring/' },
-  { title: 'Word Search', difficulty: 'Medium', tags: ['Array', 'Backtracking'], leetcodeLink: 'https://leetcode.com/problems/word-search/' },
-  { title: 'Binary Tree Inorder Traversal', difficulty: 'Easy', tags: ['Tree', 'DFS'], leetcodeLink: 'https://leetcode.com/problems/binary-tree-inorder-traversal/' },
-  { title: 'Validate Binary Search Tree', difficulty: 'Medium', tags: ['Tree', 'DFS'], leetcodeLink: 'https://leetcode.com/problems/validate-binary-search-tree/' },
-  { title: 'Symmetric Tree', difficulty: 'Easy', tags: ['Tree', 'DFS'], leetcodeLink: 'https://leetcode.com/problems/symmetric-tree/' },
-  { title: 'Binary Tree Level Order Traversal', difficulty: 'Medium', tags: ['Tree', 'BFS'], leetcodeLink: 'https://leetcode.com/problems/binary-tree-level-order-traversal/' },
-  { title: 'Maximum Depth of Binary Tree', difficulty: 'Easy', tags: ['Tree', 'DFS'], leetcodeLink: 'https://leetcode.com/problems/maximum-depth-of-binary-tree/' },
-  { title: 'Construct Binary Tree from Preorder and Inorder Traversal', difficulty: 'Medium', tags: ['Tree', 'Array'], leetcodeLink: 'https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/' },
-  { title: 'Best Time to Buy and Sell Stock', difficulty: 'Easy', tags: ['Array', 'DP'], leetcodeLink: 'https://leetcode.com/problems/best-time-to-buy-and-sell-stock/' },
-  { title: 'Binary Tree Maximum Path Sum', difficulty: 'Hard', tags: ['Tree', 'DFS'], leetcodeLink: 'https://leetcode.com/problems/binary-tree-maximum-path-sum/' },
-  { title: 'Word Ladder', difficulty: 'Hard', tags: ['BFS', 'String'], leetcodeLink: 'https://leetcode.com/problems/word-ladder/' },
-  { title: 'Longest Consecutive Sequence', difficulty: 'Medium', tags: ['Array', 'Hash Table'], leetcodeLink: 'https://leetcode.com/problems/longest-consecutive-sequence/' },
-  { title: 'Surrounded Regions', difficulty: 'Medium', tags: ['BFS', 'DFS', 'Matrix'], leetcodeLink: 'https://leetcode.com/problems/surrounded-regions/' },
-  { title: 'Palindrome Partitioning', difficulty: 'Medium', tags: ['String', 'Backtracking'], leetcodeLink: 'https://leetcode.com/problems/palindrome-partitioning/' },
-  { title: 'Gas Station', difficulty: 'Medium', tags: ['Array', 'Greedy'], leetcodeLink: 'https://leetcode.com/problems/gas-station/' },
-  { title: 'Copy List with Random Pointer', difficulty: 'Medium', tags: ['Linked List', 'Hash Table'], leetcodeLink: 'https://leetcode.com/problems/copy-list-with-random-pointer/' },
-  { title: 'Word Break', difficulty: 'Medium', tags: ['String', 'DP'], leetcodeLink: 'https://leetcode.com/problems/word-break/' },
-  { title: 'LRU Cache', difficulty: 'Medium', tags: ['Design', 'Hash Table', 'Linked List'], leetcodeLink: 'https://leetcode.com/problems/lru-cache/' },
-  { title: 'Insertion Sort List', difficulty: 'Medium', tags: ['Linked List', 'Sorting'], leetcodeLink: 'https://leetcode.com/problems/insertion-sort-list/' },
-  { title: 'Sort List', difficulty: 'Medium', tags: ['Linked List', 'Sorting', 'Merge Sort'], leetcodeLink: 'https://leetcode.com/problems/sort-list/' },
-  { title: 'Evaluate Reverse Polish Notation', difficulty: 'Medium', tags: ['Stack'], leetcodeLink: 'https://leetcode.com/problems/evaluate-reverse-polish-notation/' },
-  { title: 'Reverse Words in a String', difficulty: 'Medium', tags: ['String', 'Two Pointers'], leetcodeLink: 'https://leetcode.com/problems/reverse-words-in-a-string/' },
-  { title: 'Find Minimum in Rotated Sorted Array', difficulty: 'Medium', tags: ['Array', 'Binary Search'], leetcodeLink: 'https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/' },
-  { title: 'Maximum Product Subarray', difficulty: 'Medium', tags: ['Array', 'DP'], leetcodeLink: 'https://leetcode.com/problems/maximum-product-subarray/' },
-];
+// Combine all SDE solutions
+const allSdeSolutions = {
+  ...sdeSolutions1,
+  ...sdeSolutions2,
+  ...sdeSolutions3,
+  ...sdeSolutions4,
+  ...sdeSolutions5,
+};
 
-// Pool of 50 Frontend Questions
-export const frontendPool: Partial<Question>[] = [
-  { title: 'Implement Debounce', difficulty: 'Medium', tags: ['JavaScript', 'Optimization'] },
-  { title: 'Implement Throttle', difficulty: 'Medium', tags: ['JavaScript', 'Optimization'] },
-  { title: 'Virtual DOM and Reconciliation', difficulty: 'Medium', tags: ['React', 'Architecture'] },
-  { title: 'Explain Closures with Examples', difficulty: 'Easy', tags: ['JavaScript', 'Basics'] },
-  { title: 'Deep Clone Object', difficulty: 'Medium', tags: ['JavaScript', 'Utility'] },
-  { title: 'Event Delegation', difficulty: 'Easy', tags: ['JavaScript', 'DOM'] },
-  { title: 'CSS Box Model', difficulty: 'Easy', tags: ['CSS', 'Basics'] },
-  { title: 'React Hooks Lifecycle', difficulty: 'Medium', tags: ['React', 'Hooks'] },
-  { title: 'Promise.all Implementation', difficulty: 'Hard', tags: ['JavaScript', 'Async'] },
-  { title: 'Redux vs Context API', difficulty: 'Medium', tags: ['React', 'State Management'] },
-  { title: 'Web Performance Optimization', difficulty: 'Hard', tags: ['Performance', 'Web'] },
-  { title: 'CORS and Content Security Policy', difficulty: 'Medium', tags: ['Security', 'Web'] },
-  { title: 'Server-Side Rendering vs Static Site Generation', difficulty: 'Medium', tags: ['Next.js', 'Architecture'] },
-  { title: 'JavaScript Execution Context and Hoisting', difficulty: 'Medium', tags: ['JavaScript', 'Internal'] },
-  { title: 'Accessibility (A11y) Best Practices', difficulty: 'Medium', tags: ['Web', 'Accessibility'] },
-];
+// Original SDE Metadata mapped to Question objects
+export const sdePool: Question[] = [
+  { id: 'q-0', title: 'Two Sum', difficulty: 'Easy', tags: ['Array', 'Hash Table'] },
+  { id: 'q-1', title: 'Longest Substring Without Repeating Characters', difficulty: 'Medium', tags: ['String', 'Sliding Window'] },
+  { id: 'q-2', title: 'Median of Two Sorted Arrays', difficulty: 'Hard', tags: ['Array', 'Binary Search'] },
+  { id: 'q-3', title: 'Longest Palindromic Substring', difficulty: 'Medium', tags: ['String', 'Dynamic Programming'] },
+  { id: 'q-4', title: 'Container With Most Water', difficulty: 'Medium', tags: ['Array', 'Two Pointers'] },
+  { id: 'q-5', title: '3Sum', difficulty: 'Medium', tags: ['Array', 'Two Pointers'] },
+  { id: 'q-6', title: 'Letter Combinations of a Phone Number', difficulty: 'Medium', tags: ['String', 'Backtracking'] },
+  { id: 'q-7', title: 'Remove Nth Node From End of List', difficulty: 'Medium', tags: ['Linked List', 'Two Pointers'] },
+  { id: 'q-8', title: 'Valid Parentheses', difficulty: 'Easy', tags: ['String', 'Stack'] },
+  { id: 'q-9', title: 'Merge Two Sorted Lists', difficulty: 'Easy', tags: ['Linked List', 'Recursion'] },
+  { id: 'q-10', title: 'Merge k Sorted Lists', difficulty: 'Hard', tags: ['Linked List', 'Heap'] },
+  { id: 'q-11', title: 'Search in Rotated Sorted Array', difficulty: 'Medium', tags: ['Array', 'Binary Search'] },
+  { id: 'q-12', title: 'Combination Sum', difficulty: 'Medium', tags: ['Array', 'Backtracking'] },
+  { id: 'q-13', title: 'First Missing Positive', difficulty: 'Hard', tags: ['Array', 'Hash Table'] },
+  { id: 'q-14', title: 'Trapping Rain Water', difficulty: 'Hard', tags: ['Array', 'Two Pointers'] },
+  { id: 'q-15', title: 'Group Anagrams', difficulty: 'Medium', tags: ['Hash Table', 'String'] },
+  { id: 'q-16', title: 'Maximum Subarray', difficulty: 'Medium', tags: ['Array', 'Dynamic Programming'] },
+  { id: 'q-17', title: 'Spiral Matrix', difficulty: 'Medium', tags: ['Array', 'Matrix'] },
+  { id: 'q-18', title: 'Jump Game', difficulty: 'Medium', tags: ['Array', 'Greedy'] },
+  { id: 'q-19', title: 'Merge Intervals', difficulty: 'Medium', tags: ['Array', 'Sorting'] },
+  { id: 'q-20', title: 'Insert Interval', difficulty: 'Medium', tags: ['Array'] },
+  { id: 'q-21', title: 'Unique Paths', difficulty: 'Medium', tags: ['Math', 'Dynamic Programming'] },
+  { id: 'q-22', title: 'Climbing Stairs', difficulty: 'Easy', tags: ['Math', 'Dynamic Programming'] },
+  { id: 'q-23', title: 'Set Matrix Zeroes', difficulty: 'Medium', tags: ['Array', 'Hash Table'] },
+  { id: 'q-24', title: 'Search a 2D Matrix', difficulty: 'Medium', tags: ['Array', 'Binary Search'] },
+  { id: 'q-25', title: 'Sort Colors', difficulty: 'Medium', tags: ['Array', 'Two Pointers'] },
+  { id: 'q-26', title: 'Minimum Window Substring', difficulty: 'Hard', tags: ['Hash Table', 'Sliding Window'] },
+  { id: 'q-27', title: 'Word Search', difficulty: 'Medium', tags: ['Array', 'Backtracking'] },
+  { id: 'q-28', title: 'Binary Tree Inorder Traversal', difficulty: 'Easy', tags: ['Tree', 'DFS'] },
+  { id: 'q-29', title: 'Validate Binary Search Tree', difficulty: 'Medium', tags: ['Tree', 'DFS'] },
+  { id: 'q-30', title: 'Symmetric Tree', difficulty: 'Easy', tags: ['Tree', 'BFS'] },
+  { id: 'q-31', title: 'Binary Tree Level Order Traversal', difficulty: 'Medium', tags: ['Tree', 'BFS'] },
+  { id: 'q-32', title: 'Maximum Depth of Binary Tree', difficulty: 'Easy', tags: ['Tree', 'DFS'] },
+  { id: 'q-33', title: 'Construct Binary Tree from Preorder and Inorder Traversal', difficulty: 'Medium', tags: ['Tree', 'Array'] },
+  { id: 'q-34', title: 'Best Time to Buy and Sell Stock', difficulty: 'Easy', tags: ['Array', 'Dynamic Programming'] },
+  { id: 'q-35', title: 'Binary Tree Maximum Path Sum', difficulty: 'Hard', tags: ['Tree', 'Dynamic Programming'] },
+  { id: 'q-36', title: 'Word Ladder', difficulty: 'Hard', tags: ['Hash Table', 'BFS'] },
+  { id: 'q-37', title: 'Longest Consecutive Sequence', difficulty: 'Medium', tags: ['Array', 'Hash Table'] },
+  { id: 'q-38', title: 'Surrounded Regions', difficulty: 'Medium', tags: ['Array', 'DFS'] },
+  { id: 'q-39', title: 'Palindrome Partitioning', difficulty: 'Medium', tags: ['String', 'Backtracking'] },
+  { id: 'q-40', title: 'Gas Station', difficulty: 'Medium', tags: ['Array', 'Greedy'] },
+  { id: 'q-41', title: 'Copy List with Random Pointer', difficulty: 'Medium', tags: ['Hash Table', 'Linked List'] },
+  { id: 'q-42', title: 'Word Break', difficulty: 'Medium', tags: ['Hash Table', 'Dynamic Programming'] },
+  { id: 'q-43', title: 'LRU Cache', difficulty: 'Medium', tags: ['Hash Table', 'Design'] },
+  { id: 'q-44', title: 'Insertion Sort List', difficulty: 'Medium', tags: ['Linked List', 'Sorting'] },
+  { id: 'q-45', title: 'Sort List', difficulty: 'Medium', tags: ['Linked List', 'Divide and Conquer'] },
+  { id: 'q-46', title: 'Evaluate Reverse Polish Notation', difficulty: 'Medium', tags: ['Array', 'Math'] },
+  { id: 'q-47', title: 'Reverse Words in a String', difficulty: 'Medium', tags: ['String', 'Two Pointers'] },
+  { id: 'q-48', title: 'Find Minimum in Rotated Sorted Array', difficulty: 'Medium', tags: ['Array', 'Binary Search'] },
+  { id: 'q-49', title: 'Maximum Product Subarray', difficulty: 'Medium', tags: ['Array', 'Dynamic Programming'] }
+].map(q => {
+  const key = q.title.toLowerCase();
+  const sol = allSdeSolutions[key] || {
+    time: 'O(N)', space: 'O(N)', approach: 'Iterate and solve.',
+    solutions: { c: '/* TODO */', java: '// TODO', python: '# TODO' }
+  };
+  
+  return {
+    ...q,
+    difficulty: q.difficulty as Difficulty,
+    description: `Write an efficient algorithm to solve the ${q.title} problem. Ensure your solution handles all edge cases optimally.`,
+    approach: sol.approach,
+    justification: `This ${q.difficulty.toLowerCase()} difficulty problem is a common interview question that tests your knowledge of ${q.tags.join(' and ')}.`,
+    timeComplexity: sol.time,
+    spaceComplexity: sol.space,
+    company: 'Generic',
+    role: 'SDE',
+    questionType: 'coding' as const,
+    solutions: sol.solutions
+  };
+});
 
-// Pool of 50 Backend Questions
-export const backendPool: Partial<Question>[] = [
-  { title: 'Design a Rate Limiter', difficulty: 'Hard', tags: ['System Design', 'Scalability'] },
-  { title: 'Consistent Hashing', difficulty: 'Medium', tags: ['Distributed Systems'] },
-  { title: 'Database Indexing: B-Trees vs Hash', difficulty: 'Medium', tags: ['Database', 'Optimization'] },
-  { title: 'Load Balancing Strategies', difficulty: 'Medium', tags: ['System Design', 'Infrastructure'] },
-  { title: 'Microservices vs Monolith', difficulty: 'Easy', tags: ['Architecture'] },
-  { title: 'SQL vs NoSQL: When to use what?', difficulty: 'Easy', tags: ['Database', 'Architecture'] },
-  { title: 'Message Queues: Kafka vs RabbitMQ', difficulty: 'Medium', tags: ['System Design', 'Messaging'] },
-  { title: 'CAP Theorem and its implications', difficulty: 'Hard', tags: ['Distributed Systems'] },
-  { title: 'Designing a URL Shortener', difficulty: 'Medium', tags: ['System Design'] },
-  { title: 'Caching Strategies: Write-through vs Write-back', difficulty: 'Medium', tags: ['System Design', 'Performance'] },
-];
+// Export all the completed pools
+export { frontendQuestions as frontendPool, backendQuestions as backendPool };
