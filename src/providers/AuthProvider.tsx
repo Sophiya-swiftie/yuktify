@@ -282,13 +282,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   // Action: Add Recently Viewed
-  const addRecentlyViewed = async (questionId: string) => {
+  const addRecentlyViewed = useCallback(async (questionId: string) => {
     if (!user) {
-      // Guest behavior
-      const filtered = recentlyViewed.filter(id => id !== questionId);
-      const updated = [questionId, ...filtered].slice(0, 5);
-      setRecentlyViewed(updated);
-      saveGuestRecent(updated);
+      // Guest behavior — use functional updater to avoid stale closure over `recentlyViewed`
+      setRecentlyViewed(prev => {
+        const filtered = prev.filter(id => id !== questionId);
+        const updated = [questionId, ...filtered].slice(0, 5);
+        saveGuestRecent(updated);
+        return updated;
+      });
       return;
     }
 
@@ -308,7 +310,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     } catch (e) {
       console.error('Error adding database recently viewed:', e);
     }
-  };
+  }, [user, supabase]);
 
   // Action: Update Progress Status
   const updateProgress = async (questionId: string, status: UserProgressStatus) => {
