@@ -40,7 +40,12 @@ export interface Question {
   tags: string[];
   company: string;
   role: Role;
+  /** @deprecated Use leetcodeUrl instead */
   leetcodeLink?: string;
+  /** LeetCode problem slug, e.g. "two-sum" */
+  leetcodeSlug?: string;
+  /** Full LeetCode problem URL, e.g. "https://leetcode.com/problems/two-sum/" */
+  leetcodeUrl?: string;
 
   questionType: QuestionType;
 

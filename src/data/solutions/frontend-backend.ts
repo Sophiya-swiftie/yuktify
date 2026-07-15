@@ -39,6 +39,8 @@ export const frontendQuestions: Question[] = [
     company: 'Frontend',
     role: 'Frontend',
     questionType: 'coding',
+    leetcodeSlug: 'debounce',
+    leetcodeUrl: 'https://leetcode.com/problems/debounce/',
     domainSolution: {
       language: 'javascript',
       languageLabel: 'JavaScript',
@@ -186,6 +188,8 @@ function LifecycleDemo() {
     company: 'Frontend',
     role: 'Frontend',
     questionType: 'coding',
+    leetcodeSlug: 'promise-all',
+    leetcodeUrl: 'https://leetcode.com/problems/promise-all/',
     domainSolution: {
       language: 'javascript',
       languageLabel: 'JavaScript',
@@ -285,6 +289,8 @@ function LifecycleDemo() {
     company: 'Frontend',
     role: 'Frontend',
     questionType: 'coding',
+    leetcodeSlug: 'deep-clone',
+    leetcodeUrl: 'https://leetcode.com/problems/deep-clone/',
     domainSolution: {
       language: 'javascript',
       languageLabel: 'JavaScript',
@@ -357,6 +363,8 @@ function LifecycleDemo() {
     company: 'Frontend',
     role: 'Frontend',
     questionType: 'coding',
+    leetcodeSlug: 'throttle',
+    leetcodeUrl: 'https://leetcode.com/problems/throttle/',
     domainSolution: {
       language: 'javascript',
       languageLabel: 'JavaScript',
@@ -466,6 +474,8 @@ export const backendQuestions: Question[] = [
     company: 'Backend',
     role: 'Backend',
     questionType: 'coding',
+    leetcodeSlug: 'design-rate-limiter',
+    leetcodeUrl: 'https://leetcode.com/problems/design-rate-limiter/',
     domainSolution: {
       language: 'typescript',
       languageLabel: 'TypeScript / Node.js',
