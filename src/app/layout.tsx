@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { AuthProvider } from "@/providers/AuthProvider";
+import { ThemeProvider } from "@/providers/ThemeProvider";
 import { AuthRequiredModal } from "@/components/auth/AuthRequiredModal";
 
 export const metadata: Metadata = {
@@ -45,10 +46,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <body className="font-sans antialiased bg-background text-foreground scrollbar-custom">
-        <AuthProvider>
-          {children}
-          <AuthRequiredModal />
-        </AuthProvider>
+        <ThemeProvider>
+          <AuthProvider>
+            {children}
+            <AuthRequiredModal />
+          </AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

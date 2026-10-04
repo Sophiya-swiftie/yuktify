@@ -1,14 +1,16 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Bookmark, LogOut, LayoutDashboard, LogIn, ChevronDown, Menu } from 'lucide-react';
+import { Bookmark, LogOut, LayoutDashboard, LogIn, ChevronDown, Menu, Sun, Moon } from 'lucide-react';
 import { useAuth } from '@/providers/AuthProvider';
+import { useTheme } from '@/providers/ThemeProvider';
 import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 export const Header: React.FC = () => {
   const { user, profile, bookmarks, openAuthModal, setMobileSidebarOpen } = useAuth();
+  const { theme, toggleTheme } = useTheme();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const supabase = createClient();
@@ -107,6 +109,32 @@ export const Header: React.FC = () => {
               {bookmarks.length}
             </span>
           )}
+        </button>
+
+        {/* Dark / Light Mode Toggle */}
+        <button
+          onClick={toggleTheme}
+          suppressHydrationWarning
+          className="rounded-full p-2 text-white/60 hover:bg-surface hover:text-white transition-colors cursor-pointer"
+          title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+          aria-label="Toggle theme"
+        >
+          <span className="relative block w-5 h-5">
+            {/* Sun icon — visible in dark mode */}
+            <Sun
+              size={20}
+              className={`absolute inset-0 transition-all duration-300 ${
+                theme === 'dark' ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-90 scale-50'
+              }`}
+            />
+            {/* Moon icon — visible in light mode */}
+            <Moon
+              size={20}
+              className={`absolute inset-0 transition-all duration-300 ${
+                theme === 'light' ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 rotate-90 scale-50'
+              }`}
+            />
+          </span>
         </button>
 
         {/* User Auth Controls */}
