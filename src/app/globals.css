@@ -11,6 +11,14 @@
   --color-accent-violet: #7c3aed;
   --color-accent-cyan: #06b6d4;
 
+  --color-sidebar: var(--color-sidebar-bg);
+  --color-text-sec: var(--color-text-sec);
+  --color-text-mut: var(--color-text-mut);
+  --color-input-bg: var(--color-input-bg);
+  
+  --shadow-soft: var(--shadow-soft);
+  --shadow-glow: var(--shadow-glow);
+
   --background-image-accent-gradient: linear-gradient(to right, #7c3aed, #06b6d4);
   
   --animate-fade-in: fadeIn 0.5s ease-out forwards;
@@ -28,6 +36,15 @@
 }
 
 @layer base {
+  :root {
+    --color-sidebar-bg: #121212; /* Dark sidebar */
+    --color-text-sec: rgba(255, 255, 255, 0.7);
+    --color-text-mut: rgba(255, 255, 255, 0.4);
+    --color-input-bg: rgba(21, 21, 21, 0.6);
+    --shadow-soft: 0 10px 40px -10px rgba(0,0,0,0.5);
+    --shadow-glow: 0 0 20px rgba(124, 58, 237, 0); /* invisible default */
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
@@ -39,11 +56,19 @@
 
   /* ── Light Mode Overrides ── */
   html.light {
-    --color-background: #f8f9fc;
-    --color-foreground: #0f0f10;
-    --color-surface: #ffffff;
-    --color-border: #e2e4e9;
-    --color-card: #f2f3f7;
+    --color-background: #F1F3F8;
+    --color-foreground: #111827;
+    --color-surface: #FFFFFF;
+    --color-border: #E2E8F0;
+    --color-card: #FFFFFF;
+    
+    --color-sidebar-bg: #ECEFF5;
+    --color-text-sec: #4B5563;
+    --color-text-mut: #6B7280;
+    --color-input-bg: #FFFFFF;
+    
+    --shadow-soft: 0 12px 30px -10px rgba(17, 24, 39, 0.08);
+    --shadow-glow: 0 8px 30px -4px rgba(124, 58, 237, 0.15);
   }
 }
 

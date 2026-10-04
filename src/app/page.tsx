@@ -74,51 +74,54 @@ export default function Home() {
         <Header />
         
         <div className="flex-1 overflow-y-auto scrollbar-custom relative">
-          <div className="max-w-4xl mx-auto px-4 md:px-6 pt-8 md:pt-12 pb-32">
+          {/* Subtle Radial Glow */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(124,58,237,0.08)_0%,transparent_60%)] pointer-events-none" />
+          
+          <div className="max-w-4xl mx-auto px-4 md:px-6 pt-6 md:pt-10 pb-20 relative z-10">
             
             {messages.length === 0 ? (
               <div className="animate-fade-in">
-                <div className="text-center mb-10 md:mb-16">
-                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent-violet/10 border border-accent-violet/20 text-accent-violet text-xs font-bold uppercase tracking-widest mb-6">
+                <div className="text-center mb-10 md:mb-12">
+                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent-violet/10 border border-accent-violet/30 text-accent-violet text-xs font-bold uppercase tracking-widest mb-6 shadow-sm">
                     <Sparkles size={14} />
                     The Future of Interview Prep
                   </div>
-                  <h1 className="text-4xl sm:text-5xl md:text-7xl font-black text-foreground mb-6 tracking-tight">
+                  <h1 className="text-4xl sm:text-5xl md:text-7xl font-black text-foreground mb-6 tracking-tight drop-shadow-sm">
                     Master <span className="accent-text">Coding and Interview.</span>
                   </h1>
-                  <p className="text-sm sm:text-base md:text-lg text-foreground/40 max-w-2xl mx-auto leading-relaxed">
+                  <p className="text-sm sm:text-base md:text-lg text-text-sec max-w-2xl mx-auto leading-relaxed">
                     YUKTIFY combines curated high-frequency company questions with state-of-the-art AI to help you land your dream job.
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-                  <div className="glass-card p-8 group hover:border-accent-violet/50 transition-all cursor-pointer">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                  <div className="bg-card border border-border shadow-soft rounded-[20px] p-8 group hover:border-accent-violet/50 hover:shadow-glow transition-all cursor-pointer relative overflow-hidden">
                     <div className="w-12 h-12 rounded-xl bg-accent-violet/10 flex items-center justify-center text-accent-violet mb-6 group-hover:scale-110 transition-transform">
                       <BrainCircuit size={24} />
                     </div>
                     <h3 className="text-xl font-bold text-foreground mb-3">AI Deep Dives</h3>
-                    <p className="text-sm text-foreground/40 leading-relaxed">
+                    <p className="text-sm text-text-mut leading-relaxed">
                       Don&apos;t just see the solution. Ask the AI to explain the intuition, suggest alternatives, or dry-run your code.
                     </p>
                   </div>
-                  <div className="glass-card p-8 group hover:border-accent-cyan/50 transition-all cursor-pointer">
+                  <div className="bg-card border border-border shadow-soft rounded-[20px] p-8 group hover:border-accent-cyan/50 hover:shadow-glow transition-all cursor-pointer relative overflow-hidden">
                     <div className="w-12 h-12 rounded-xl bg-accent-cyan/10 flex items-center justify-center text-accent-cyan mb-6 group-hover:scale-110 transition-transform">
                       <Zap size={24} />
                     </div>
                     <h3 className="text-xl font-bold text-foreground mb-3">Company Focused</h3>
-                    <p className="text-sm text-foreground/40 leading-relaxed">
+                    <p className="text-sm text-text-mut leading-relaxed">
                       Select from 100+ top tech companies. Get specific questions asked in SDE, Frontend, and Backend loops.
                     </p>
                   </div>
                 </div>
 
                 <div className="flex flex-col items-center gap-6">
-                  <p className="text-xs font-bold text-foreground/20 uppercase tracking-widest">Get Started</p>
+                  <p className="text-xs font-bold text-text-mut uppercase tracking-widest">Get Started</p>
                   <div className="flex flex-wrap justify-center gap-4">
-                    <Link href="/company/google?role=SDE" className="btn-primary flex items-center gap-2">
+                    <Link href="/company/google?role=SDE" className="btn-primary flex items-center gap-2 shadow-glow">
                       Try Google Prep <ArrowRight size={18} />
                     </Link>
-                    <Link href="/company/amazon?role=SDE" className="px-6 py-2 rounded-xl bg-surface border border-border text-foreground font-semibold hover:bg-surface/80 transition-all">
+                    <Link href="/company/amazon?role=SDE" className="px-6 py-2 rounded-xl bg-surface border border-border text-foreground font-semibold hover:bg-surface/80 hover:shadow-soft transition-all">
                       Browse Amazon
                     </Link>
                   </div>

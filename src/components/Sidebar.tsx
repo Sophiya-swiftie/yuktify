@@ -36,7 +36,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
       <aside 
         className={cn(
-          "h-screen flex-col border-r border-border bg-background transition-all duration-300 z-50",
+          "h-screen flex-col border-r border-border bg-sidebar transition-all duration-300 z-50",
           // Desktop styles
           "hidden md:flex md:relative",
           isCollapsed ? "md:w-20" : "md:w-72",
