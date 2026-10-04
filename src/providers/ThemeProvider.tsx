@@ -11,32 +11,33 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
+// Apply theme class to <html> — pure DOM side-effect, no setState
+const applyTheme = (t: Theme) => {
+  const root = document.documentElement;
+  if (t === 'dark') {
+    root.classList.add('dark');
+    root.classList.remove('light');
+  } else {
+    root.classList.add('light');
+    root.classList.remove('dark');
+  }
+};
+
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // Default to dark; read localStorage on mount to avoid flash
-  const [theme, setTheme] = useState<Theme>('dark');
+  // Lazy initializer reads localStorage once — no setState inside useEffect needed
+  const [theme, setTheme] = useState<Theme>(() => {
+    if (typeof window === 'undefined') return 'dark';
+    return (localStorage.getItem('yuktify_theme') as Theme) ?? 'dark';
+  });
 
+  // Sync the DOM class whenever theme changes (including on first mount)
   useEffect(() => {
-    const stored = localStorage.getItem('yuktify_theme') as Theme | null;
-    const initial = stored ?? 'dark';
-    setTheme(initial);
-    applyTheme(initial);
-  }, []);
-
-  const applyTheme = (t: Theme) => {
-    const root = document.documentElement;
-    if (t === 'dark') {
-      root.classList.add('dark');
-      root.classList.remove('light');
-    } else {
-      root.classList.add('light');
-      root.classList.remove('dark');
-    }
-  };
+    applyTheme(theme);
+  }, [theme]);
 
   const toggleTheme = () => {
     const next: Theme = theme === 'dark' ? 'light' : 'dark';
     setTheme(next);
-    applyTheme(next);
     localStorage.setItem('yuktify_theme', next);
   };
 
