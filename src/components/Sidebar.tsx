@@ -70,7 +70,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   <circle cx="50" cy="62" r="5" fill="#FFFFFF" />
                 </svg>
               </div>
-              <span className="text-lg font-black tracking-wider text-white uppercase">YUKTIFY</span>
+              <span className="text-lg font-black tracking-wider text-foreground uppercase">YUKTIFY</span>
             </div>
           )}
 
@@ -78,7 +78,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
           <button 
             onClick={() => setMobileSidebarOpen(false)}
             suppressHydrationWarning
-            className="p-2 rounded-lg text-white/40 hover:bg-surface hover:text-white transition-colors md:hidden"
+            className="p-2 rounded-lg text-foreground/40 hover:bg-surface hover:text-foreground transition-colors md:hidden"
           >
             <X size={20} />
           </button>
@@ -87,7 +87,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
           <button 
             onClick={() => setIsCollapsed(!isCollapsed)}
             suppressHydrationWarning
-            className="hidden md:block p-2 rounded-lg text-white/40 hover:bg-surface hover:text-white transition-colors"
+            className="hidden md:block p-2 rounded-lg text-foreground/40 hover:bg-surface hover:text-foreground transition-colors"
           >
             {isCollapsed ? <PanelLeftOpen size={20} /> : <PanelLeftClose size={20} />}
           </button>
@@ -133,10 +133,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
         {(!isCollapsed || mobileSidebarOpen) && (
           <div className="p-6 border-t border-border">
             <div className="p-4 rounded-xl bg-surface/50 border border-border">
-              <p className="text-[10px] text-white/30 uppercase tracking-widest font-bold mb-1">Status</p>
+              <p className="text-[10px] text-foreground/30 uppercase tracking-widest font-bold mb-1">Status</p>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                <p className="text-xs text-white/60">YUKTIFY AI Online</p>
+                <p className="text-xs text-foreground/60">YUKTIFY AI Online</p>
               </div>
             </div>
           </div>

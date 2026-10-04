@@ -72,7 +72,7 @@ export const ChatBox: React.FC<ChatBoxProps> = ({ messages, isLoading }) => {
             <circle cx="50" cy="62" r="5" fill="#FFFFFF" />
           </svg>
         </div>
-        <h3 className="text-lg font-bold text-white mb-2">Welcome to YUKTIFY Assistant</h3>
+        <h3 className="text-lg font-bold text-foreground mb-2">Welcome to YUKTIFY Assistant</h3>
         <p className="max-w-sm text-sm">
           Ask questions about DSA, System Design, Frontend internals, or Backend optimizations. I&apos;m here to help you crack the interview.
         </p>
@@ -92,15 +92,15 @@ export const ChatBox: React.FC<ChatBoxProps> = ({ messages, isLoading }) => {
         >
           <div className={cn(
             "w-8 h-8 rounded-lg flex-shrink-0 flex items-center justify-center mt-1",
-            message.role === 'user' ? "bg-border text-white/60" : "bg-accent-gradient text-white"
+            message.role === 'user' ? "bg-border text-foreground/60" : "bg-accent-gradient text-foreground"
           )}>
             {message.role === 'user' ? <User size={16} /> : <Bot size={16} />}
           </div>
           <div className="flex-1 overflow-hidden">
-            <div className="text-[10px] font-bold uppercase tracking-widest text-white/30 mb-1">
+            <div className="text-[10px] font-bold uppercase tracking-widest text-foreground/30 mb-1">
               {message.role === 'user' ? 'You' : 'YUKTIFY AI'}
             </div>
-            <div className="text-sm md:text-base text-white/80 leading-relaxed markdown-content prose prose-invert max-w-none">
+            <div className="text-sm md:text-base text-foreground/80 leading-relaxed markdown-content prose prose-invert max-w-none">
               <TypewriterMarkdown
                 key={message.id}
                 content={message.content}
@@ -112,11 +112,11 @@ export const ChatBox: React.FC<ChatBoxProps> = ({ messages, isLoading }) => {
       ))}
       {isLoading && (
         <div className="flex gap-4 p-4 rounded-2xl bg-accent-violet/5 self-start max-w-[90%] animate-pulse">
-          <div className="w-8 h-8 rounded-lg bg-accent-gradient text-white flex items-center justify-center mt-1">
+          <div className="w-8 h-8 rounded-lg bg-accent-gradient text-foreground flex items-center justify-center mt-1">
             <div className="w-4.5 h-4.5 rounded-full border-2 border-white/20 border-t-white animate-spin" />
           </div>
           <div className="flex-1">
-            <div className="text-[10px] font-bold uppercase tracking-widest text-white/30 mb-1">YUKTIFY AI</div>
+            <div className="text-[10px] font-bold uppercase tracking-widest text-foreground/30 mb-1">YUKTIFY AI</div>
             <div className="flex gap-1 mt-2">
               <div className="w-1.5 h-1.5 rounded-full bg-accent-violet/40 animate-bounce" style={{ animationDelay: '0ms' }} />
               <div className="w-1.5 h-1.5 rounded-full bg-accent-violet/40 animate-bounce" style={{ animationDelay: '150ms' }} />

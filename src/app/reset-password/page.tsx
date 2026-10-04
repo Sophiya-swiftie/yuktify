@@ -81,12 +81,12 @@ export default function ResetPasswordPage() {
               <circle cx="50" cy="62" r="5" fill="#FFFFFF" />
             </svg>
           </div>
-          <span className="text-lg font-bold text-white uppercase tracking-wider">YUKTIFY</span>
+          <span className="text-lg font-bold text-foreground uppercase tracking-wider">YUKTIFY</span>
         </div>
 
         <div className="text-center mb-6">
-          <h2 className="text-2xl font-bold text-white mb-2">Reset Password</h2>
-          <p className="text-xs text-white/50">
+          <h2 className="text-2xl font-bold text-foreground mb-2">Reset Password</h2>
+          <p className="text-xs text-foreground/50">
             Create a strong new password for your account below.
           </p>
         </div>
@@ -106,7 +106,7 @@ export default function ResetPasswordPage() {
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label htmlFor="new-password" className="block text-xs font-semibold text-white/50 uppercase tracking-wider mb-2">New Password</label>
+            <label htmlFor="new-password" className="block text-xs font-semibold text-foreground/50 uppercase tracking-wider mb-2">New Password</label>
             <div className="relative">
               <input
                 id="new-password"
@@ -115,12 +115,12 @@ export default function ResetPasswordPage() {
                 placeholder="•••••••• (Min 6 chars)"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full pl-4 pr-10 py-2.5 bg-surface border border-border rounded-xl text-sm text-white focus:outline-none focus:border-accent-violet transition-all focus:ring-1 focus:ring-accent-violet"
+                className="w-full pl-4 pr-10 py-2.5 bg-surface border border-border rounded-xl text-sm text-foreground focus:outline-none focus:border-accent-violet transition-all focus:ring-1 focus:ring-accent-violet"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white transition-colors"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-foreground/40 hover:text-foreground transition-colors"
               >
                 {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
               </button>
@@ -128,7 +128,7 @@ export default function ResetPasswordPage() {
           </div>
 
           <div>
-            <label htmlFor="confirm-new-password" className="block text-xs font-semibold text-white/50 uppercase tracking-wider mb-2">Confirm New Password</label>
+            <label htmlFor="confirm-new-password" className="block text-xs font-semibold text-foreground/50 uppercase tracking-wider mb-2">Confirm New Password</label>
             <div className="relative">
               <input
                 id="confirm-new-password"
@@ -137,12 +137,12 @@ export default function ResetPasswordPage() {
                 placeholder="••••••••"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className="w-full pl-4 pr-10 py-2.5 bg-surface border border-border rounded-xl text-sm text-white focus:outline-none focus:border-accent-violet transition-all focus:ring-1 focus:ring-accent-violet"
+                className="w-full pl-4 pr-10 py-2.5 bg-surface border border-border rounded-xl text-sm text-foreground focus:outline-none focus:border-accent-violet transition-all focus:ring-1 focus:ring-accent-violet"
               />
               <button
                 type="button"
                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white transition-colors"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-foreground/40 hover:text-foreground transition-colors"
               >
                 {showConfirmPassword ? <EyeOff size={16} /> : <Eye size={16} />}
               </button>

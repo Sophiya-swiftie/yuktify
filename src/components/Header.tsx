@@ -60,7 +60,7 @@ export const Header: React.FC = () => {
         <button 
           onClick={() => setMobileSidebarOpen(true)}
           suppressHydrationWarning
-          className="p-2 rounded-lg text-white/60 hover:bg-surface hover:text-white transition-colors cursor-pointer md:hidden"
+          className="p-2 rounded-lg text-foreground/60 hover:bg-surface hover:text-foreground transition-colors cursor-pointer md:hidden"
           title="Open Menu"
         >
           <Menu size={20} />
@@ -89,8 +89,8 @@ export const Header: React.FC = () => {
             </svg>
           </div>
           <div className="flex flex-col">
-            <span className="text-md font-black tracking-wider text-white uppercase group-hover:text-accent-violet transition-colors leading-none mb-1">YUKTIFY</span>
-            <span className="text-[9px] font-bold text-white/40 tracking-widest uppercase leading-none whitespace-nowrap">Master Coding. Ace Interviews.</span>
+            <span className="text-md font-black tracking-wider text-foreground uppercase group-hover:text-accent-violet transition-colors leading-none mb-1">YUKTIFY</span>
+            <span className="text-[9px] font-bold text-foreground/40 tracking-widest uppercase leading-none whitespace-nowrap">Master Coding. Ace Interviews.</span>
           </div>
         </Link>
       </div>
@@ -100,12 +100,12 @@ export const Header: React.FC = () => {
         <button 
           onClick={handleBookmarkHeaderClick}
           suppressHydrationWarning
-          className="relative rounded-full p-2 text-white/60 hover:bg-surface hover:text-white transition-colors cursor-pointer"
+          className="relative rounded-full p-2 text-foreground/60 hover:bg-surface hover:text-foreground transition-colors cursor-pointer"
           title="View Bookmarks"
         >
           <Bookmark size={20} />
           {bookmarks.length > 0 && (
-            <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-accent-violet text-[9px] font-bold text-white">
+            <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-accent-violet text-[9px] font-bold text-foreground">
               {bookmarks.length}
             </span>
           )}
@@ -115,7 +115,7 @@ export const Header: React.FC = () => {
         <button
           onClick={toggleTheme}
           suppressHydrationWarning
-          className="flex items-center justify-center w-9 h-9 rounded-full border border-border bg-surface text-white/70 hover:text-white hover:border-accent-violet transition-all cursor-pointer"
+          className="flex items-center justify-center w-9 h-9 rounded-full border border-border bg-surface text-foreground/70 hover:text-foreground hover:border-accent-violet transition-all cursor-pointer"
           title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
           aria-label="Toggle theme"
         >
@@ -126,7 +126,7 @@ export const Header: React.FC = () => {
         {!user ? (
           <Link 
             href="/auth" 
-            className="flex items-center gap-2 rounded-xl bg-surface border border-border px-4 py-1.5 hover:border-accent-violet hover:bg-surface/80 transition-all text-sm font-semibold text-white/90"
+            className="flex items-center gap-2 rounded-xl bg-surface border border-border px-4 py-1.5 hover:border-accent-violet hover:bg-surface/80 transition-all text-sm font-semibold text-foreground/90"
           >
             <LogIn size={15} />
             <span>Sign In</span>
@@ -137,7 +137,7 @@ export const Header: React.FC = () => {
               onClick={() => setDropdownOpen(!dropdownOpen)}
               className="flex items-center gap-2 rounded-xl bg-surface border border-border px-3 py-1.5 hover:border-accent-violet transition-all cursor-pointer focus:outline-none"
             >
-              <div className="h-6 w-6 rounded-full bg-accent-gradient flex items-center justify-center text-white text-[10px] font-black overflow-hidden shrink-0 border border-white/10">
+              <div className="h-6 w-6 rounded-full bg-accent-gradient flex items-center justify-center text-foreground text-[10px] font-black overflow-hidden shrink-0 border border-white/10">
                 {profile?.avatar_url || user.user_metadata?.avatar_url ? (
                   /* eslint-disable-next-line @next/next/no-img-element */
                   <img 
@@ -149,8 +149,8 @@ export const Header: React.FC = () => {
                   getInitials()
                 )}
               </div>
-              <span className="max-w-[120px] truncate text-sm font-semibold text-white/80">{getDisplayName()}</span>
-              <ChevronDown size={14} className={`text-white/40 transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
+              <span className="max-w-[120px] truncate text-sm font-semibold text-foreground/80">{getDisplayName()}</span>
+              <ChevronDown size={14} className={`text-foreground/40 transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
             </button>
 
             {/* Dropdown Menu */}
@@ -159,7 +159,7 @@ export const Header: React.FC = () => {
                 <Link 
                   href="/profile"
                   onClick={() => setDropdownOpen(false)}
-                  className="flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-white/80 hover:bg-white/5 hover:text-white transition-colors"
+                  className="flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-foreground/80 hover:bg-foreground/5 hover:text-foreground transition-colors"
                 >
                   <LayoutDashboard size={15} className="text-accent-violet" />
                   <span>Profile Dashboard</span>
@@ -168,7 +168,7 @@ export const Header: React.FC = () => {
                 <Link 
                   href="/profile"
                   onClick={() => setDropdownOpen(false)}
-                  className="flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-white/80 hover:bg-white/5 hover:text-white transition-colors"
+                  className="flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-foreground/80 hover:bg-foreground/5 hover:text-foreground transition-colors"
                 >
                   <Bookmark size={15} className="text-accent-cyan" />
                   <span>My Bookmarks</span>

@@ -46,7 +46,7 @@ export default function ForgotPasswordPage() {
       {/* Back Link */}
       <Link 
         href="/auth" 
-        className="absolute left-6 top-6 flex items-center gap-2 text-sm text-white/50 hover:text-white transition-colors"
+        className="absolute left-6 top-6 flex items-center gap-2 text-sm text-foreground/50 hover:text-foreground transition-colors"
       >
         <ArrowLeft size={16} />
         Back to Login
@@ -74,12 +74,12 @@ export default function ForgotPasswordPage() {
               <circle cx="50" cy="62" r="5" fill="#FFFFFF" />
             </svg>
           </div>
-          <span className="text-lg font-bold text-white uppercase tracking-wider">YUKTIFY</span>
+          <span className="text-lg font-bold text-foreground uppercase tracking-wider">YUKTIFY</span>
         </div>
 
         <div className="text-center mb-6">
-          <h2 className="text-2xl font-bold text-white mb-2">Forgot Password</h2>
-          <p className="text-xs text-white/50 max-w-xs mx-auto">
+          <h2 className="text-2xl font-bold text-foreground mb-2">Forgot Password</h2>
+          <p className="text-xs text-foreground/50 max-w-xs mx-auto">
             Enter your account email below, and we will send you a secure link to reset your password.
           </p>
         </div>
@@ -99,7 +99,7 @@ export default function ForgotPasswordPage() {
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label htmlFor="reset-email" className="block text-xs font-semibold text-white/50 uppercase tracking-wider mb-2">Email Address</label>
+            <label htmlFor="reset-email" className="block text-xs font-semibold text-foreground/50 uppercase tracking-wider mb-2">Email Address</label>
             <input
               id="reset-email"
               type="email"
@@ -107,7 +107,7 @@ export default function ForgotPasswordPage() {
               placeholder="alex@company.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-2.5 bg-surface border border-border rounded-xl text-sm text-white focus:outline-none focus:border-accent-violet transition-all focus:ring-1 focus:ring-accent-violet"
+              className="w-full px-4 py-2.5 bg-surface border border-border rounded-xl text-sm text-foreground focus:outline-none focus:border-accent-violet transition-all focus:ring-1 focus:ring-accent-violet"
             />
           </div>
 

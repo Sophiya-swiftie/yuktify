@@ -83,10 +83,10 @@ export default function Home() {
                     <Sparkles size={14} />
                     The Future of Interview Prep
                   </div>
-                  <h1 className="text-4xl sm:text-5xl md:text-7xl font-black text-white mb-6 tracking-tight">
+                  <h1 className="text-4xl sm:text-5xl md:text-7xl font-black text-foreground mb-6 tracking-tight">
                     Master <span className="accent-text">Coding and Interview.</span>
                   </h1>
-                  <p className="text-sm sm:text-base md:text-lg text-white/40 max-w-2xl mx-auto leading-relaxed">
+                  <p className="text-sm sm:text-base md:text-lg text-foreground/40 max-w-2xl mx-auto leading-relaxed">
                     YUKTIFY combines curated high-frequency company questions with state-of-the-art AI to help you land your dream job.
                   </p>
                 </div>
@@ -96,8 +96,8 @@ export default function Home() {
                     <div className="w-12 h-12 rounded-xl bg-accent-violet/10 flex items-center justify-center text-accent-violet mb-6 group-hover:scale-110 transition-transform">
                       <BrainCircuit size={24} />
                     </div>
-                    <h3 className="text-xl font-bold text-white mb-3">AI Deep Dives</h3>
-                    <p className="text-sm text-white/40 leading-relaxed">
+                    <h3 className="text-xl font-bold text-foreground mb-3">AI Deep Dives</h3>
+                    <p className="text-sm text-foreground/40 leading-relaxed">
                       Don&apos;t just see the solution. Ask the AI to explain the intuition, suggest alternatives, or dry-run your code.
                     </p>
                   </div>
@@ -105,20 +105,20 @@ export default function Home() {
                     <div className="w-12 h-12 rounded-xl bg-accent-cyan/10 flex items-center justify-center text-accent-cyan mb-6 group-hover:scale-110 transition-transform">
                       <Zap size={24} />
                     </div>
-                    <h3 className="text-xl font-bold text-white mb-3">Company Focused</h3>
-                    <p className="text-sm text-white/40 leading-relaxed">
+                    <h3 className="text-xl font-bold text-foreground mb-3">Company Focused</h3>
+                    <p className="text-sm text-foreground/40 leading-relaxed">
                       Select from 100+ top tech companies. Get specific questions asked in SDE, Frontend, and Backend loops.
                     </p>
                   </div>
                 </div>
 
                 <div className="flex flex-col items-center gap-6">
-                  <p className="text-xs font-bold text-white/20 uppercase tracking-widest">Get Started</p>
+                  <p className="text-xs font-bold text-foreground/20 uppercase tracking-widest">Get Started</p>
                   <div className="flex flex-wrap justify-center gap-4">
                     <Link href="/company/google?role=SDE" className="btn-primary flex items-center gap-2">
                       Try Google Prep <ArrowRight size={18} />
                     </Link>
-                    <Link href="/company/amazon?role=SDE" className="px-6 py-2 rounded-xl bg-surface border border-border text-white font-semibold hover:bg-surface/80 transition-all">
+                    <Link href="/company/amazon?role=SDE" className="px-6 py-2 rounded-xl bg-surface border border-border text-foreground font-semibold hover:bg-surface/80 transition-all">
                       Browse Amazon
                     </Link>
                   </div>

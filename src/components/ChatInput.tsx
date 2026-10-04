@@ -41,7 +41,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, isLoading }
           onSubmit={handleSubmit}
           className="relative group glass-card border-accent-violet/30 focus-within:border-accent-violet/60 transition-all p-1"
         >
-          <div className="absolute -top-10 left-4 flex items-center gap-2 px-3 py-1 rounded-full bg-surface/80 border border-border text-[10px] text-white/50 uppercase tracking-widest font-bold backdrop-blur-md">
+          <div className="absolute -top-10 left-4 flex items-center gap-2 px-3 py-1 rounded-full bg-surface/80 border border-border text-[10px] text-foreground/50 uppercase tracking-widest font-bold backdrop-blur-md">
             <Sparkles size={10} className="text-accent-cyan" />
             Ask YUKTIFY AI anything
           </div>
@@ -54,13 +54,13 @@ export const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, isLoading }
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder="e.g. Explain Time Complexity of Quick Sort or give a System Design for Uber..."
-              className="flex-1 bg-transparent border-none focus:ring-0 text-white placeholder-white/20 py-4 resize-none scrollbar-none text-sm md:text-base"
+              className="flex-1 bg-transparent border-none focus:ring-0 text-foreground placeholder-white/20 py-4 resize-none scrollbar-none text-sm md:text-base"
             />
             <button
               type="submit"
               disabled={!input.trim() || isLoading}
               suppressHydrationWarning
-              className="mb-2 p-2.5 rounded-xl bg-accent-gradient text-white disabled:opacity-20 disabled:grayscale transition-all hover:scale-105 active:scale-95 shadow-lg shadow-accent-violet/20 cursor-pointer"
+              className="mb-2 p-2.5 rounded-xl bg-accent-gradient text-foreground disabled:opacity-20 disabled:grayscale transition-all hover:scale-105 active:scale-95 shadow-lg shadow-accent-violet/20 cursor-pointer"
             >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className="w-5 h-5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
@@ -68,7 +68,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, isLoading }
             </button>
           </div>
         </form>
-        <p className="mt-3 text-center text-[10px] text-white/20">
+        <p className="mt-3 text-center text-[10px] text-foreground/20">
           YUKTIFY AI may provide helpful but imperfect technical guidance. Always verify complex architectural patterns.
         </p>
       </div>

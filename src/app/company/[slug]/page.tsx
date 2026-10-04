@@ -35,7 +35,7 @@ export default function CompanyPage() {
 
   if (!company) {
     return (
-      <div className="flex h-screen items-center justify-center bg-background text-white">
+      <div className="flex h-screen items-center justify-center bg-background text-foreground">
         <div className="text-center">
           <h1 className="text-4xl font-bold mb-4">Company Not Found</h1>
           <Link href="/" className="text-accent-violet hover:underline">Return Home</Link>
@@ -121,10 +121,10 @@ export default function CompanyPage() {
           <div className="max-w-4xl mx-auto pt-8">
             
             {/* Breadcrumbs */}
-            <div className="flex items-center gap-2 text-xs text-white/30 mb-8">
-              <Link href="/" className="hover:text-white transition-colors">Home</Link>
+            <div className="flex items-center gap-2 text-xs text-foreground/30 mb-8">
+              <Link href="/" className="hover:text-foreground transition-colors">Home</Link>
               <ChevronLeft size={12} className="rotate-180" />
-              <span className="text-white/60">{company.name}</span>
+              <span className="text-foreground/60">{company.name}</span>
               <ChevronLeft size={12} className="rotate-180" />
               <span className="text-accent-violet">{role}</span>
             </div>
@@ -132,27 +132,27 @@ export default function CompanyPage() {
             {/* Company Header */}
             <div className="flex flex-col sm:flex-row sm:items-end gap-4 sm:gap-6 mb-8 sm:mb-12">
               <div 
-                className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl sm:rounded-3xl flex items-center justify-center text-white text-2xl sm:text-3xl font-black shadow-2xl shadow-accent-violet/20"
+                className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl sm:rounded-3xl flex items-center justify-center text-foreground text-2xl sm:text-3xl font-black shadow-2xl shadow-accent-violet/20"
                 style={{ backgroundColor: company.color }}
               >
                 {company.name[0]}
               </div>
               <div className="pb-1">
-                <h1 className="text-3xl sm:text-4xl font-black text-white mb-1 tracking-tight">{company.name}</h1>
-                <p className="text-sm sm:text-base text-white/40 font-medium">{role} Interview Preparation</p>
+                <h1 className="text-3xl sm:text-4xl font-black text-foreground mb-1 tracking-tight">{company.name}</h1>
+                <p className="text-sm sm:text-base text-foreground/40 font-medium">{role} Interview Preparation</p>
               </div>
             </div>
 
             {/* Filters Row */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
               <div className="relative w-full sm:w-72">
-                <SearchIcon size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-white/30" />
+                <SearchIcon size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-foreground/30" />
                 <input 
                   type="text" 
                   placeholder="Search questions or tags..." 
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 bg-surface border border-border rounded-xl text-sm text-white focus:outline-none focus:border-accent-violet transition-all"
+                  className="w-full pl-10 pr-4 py-2 bg-surface border border-border rounded-xl text-sm text-foreground focus:outline-none focus:border-accent-violet transition-all"
                 />
               </div>
               
@@ -166,8 +166,8 @@ export default function CompanyPage() {
                       className={cn(
                         "px-3.5 sm:px-4 py-1.5 rounded-lg text-xs font-semibold transition-all flex-1 sm:flex-initial",
                         difficultyFilter === diff 
-                          ? "bg-accent-violet text-white shadow-lg shadow-accent-violet/20" 
-                          : "text-white/40 hover:text-white"
+                          ? "bg-accent-violet text-foreground shadow-lg shadow-accent-violet/20" 
+                          : "text-foreground/40 hover:text-foreground"
                       )}
                     >
                       {diff}
@@ -188,7 +188,7 @@ export default function CompanyPage() {
                   ))
                 ) : (
                   <div className="py-20 text-center glass-card">
-                    <p className="text-white/30 italic">No questions found matching your filters for {company.name} {role}.</p>
+                    <p className="text-foreground/30 italic">No questions found matching your filters for {company.name} {role}.</p>
                     <button 
                       onClick={() => { setSearchQuery(''); setDifficultyFilter('All'); }}
                       suppressHydrationWarning

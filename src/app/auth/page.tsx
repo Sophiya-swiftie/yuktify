@@ -150,7 +150,7 @@ export default function AuthPage() {
       {/* Back to Home Button */}
       <Link 
         href="/"
-        className="absolute left-6 top-6 z-50 flex items-center gap-2 text-sm text-white/50 hover:text-white transition-colors"
+        className="absolute left-6 top-6 z-50 flex items-center gap-2 text-sm text-foreground/50 hover:text-foreground transition-colors"
       >
         <ArrowLeft size={16} />
         Back to Prep
@@ -185,24 +185,24 @@ export default function AuthPage() {
             </svg>
           </div>
           <div className="flex flex-col">
-            <span className="text-xl font-black tracking-wider text-white uppercase leading-none mb-1">YUKTIFY</span>
-            <span className="text-[10px] font-bold text-white/40 tracking-widest uppercase leading-none">Master Coding. Ace Interviews.</span>
+            <span className="text-xl font-black tracking-wider text-foreground uppercase leading-none mb-1">YUKTIFY</span>
+            <span className="text-[10px] font-bold text-foreground/40 tracking-widest uppercase leading-none">Master Coding. Ace Interviews.</span>
           </div>
         </div>
 
         {/* Content */}
         <div className="my-auto z-10 max-w-lg space-y-6">
-          <h1 className="text-5xl font-black text-white leading-tight tracking-tight">
+          <h1 className="text-5xl font-black text-foreground leading-tight tracking-tight">
             Your interview prep.<br />
             <span className="accent-text">Finally organized.</span>
           </h1>
-          <p className="text-base text-white/50 leading-relaxed">
+          <p className="text-base text-foreground/50 leading-relaxed">
             Practice company-wise questions, master verified code solutions, track your progress status, and prepare smarter with interactive AI feedback.
           </p>
         </div>
 
         {/* Footer */}
-        <div className="text-xs text-white/20 z-10">
+        <div className="text-xs text-foreground/20 z-10">
           &copy; {new Date().getFullYear()} YUKTIFY Platform. All rights reserved.
         </div>
       </div>
@@ -235,8 +235,8 @@ export default function AuthPage() {
                 <circle cx="50" cy="62" r="5" fill="#FFFFFF" />
               </svg>
             </div>
-            <span className="text-2xl font-black tracking-wider text-white uppercase mb-1">YUKTIFY</span>
-            <span className="text-[10px] font-bold text-white/40 tracking-widest uppercase text-center">Master Coding. Ace Interviews.</span>
+            <span className="text-2xl font-black tracking-wider text-foreground uppercase mb-1">YUKTIFY</span>
+            <span className="text-[10px] font-bold text-foreground/40 tracking-widest uppercase text-center">Master Coding. Ace Interviews.</span>
           </div>
 
           {/* Tabs */}
@@ -246,8 +246,8 @@ export default function AuthPage() {
               suppressHydrationWarning
               className={`w-1/2 pb-3 text-sm font-bold tracking-wider uppercase border-b-2 transition-all focus:outline-none ${
                 activeTab === 'signin'
-                  ? 'border-accent-violet text-white'
-                  : 'border-transparent text-white/40 hover:text-white/60'
+                  ? 'border-accent-violet text-foreground'
+                  : 'border-transparent text-foreground/40 hover:text-foreground/60'
               }`}
             >
               Sign In
@@ -257,8 +257,8 @@ export default function AuthPage() {
               suppressHydrationWarning
               className={`w-1/2 pb-3 text-sm font-bold tracking-wider uppercase border-b-2 transition-all focus:outline-none ${
                 activeTab === 'signup'
-                  ? 'border-accent-violet text-white'
-                  : 'border-transparent text-white/40 hover:text-white/60'
+                  ? 'border-accent-violet text-foreground'
+                  : 'border-transparent text-foreground/40 hover:text-foreground/60'
               }`}
             >
               Create Account
@@ -278,8 +278,8 @@ export default function AuthPage() {
           {activeTab === 'signin' && (
             <div className="animate-slide-in">
               <div className="mb-6">
-                <h2 className="text-2xl font-bold text-white mb-1">Welcome back</h2>
-                <p className="text-xs text-white/40">Sign in with email or password to continue</p>
+                <h2 className="text-2xl font-bold text-foreground mb-1">Welcome back</h2>
+                <p className="text-xs text-foreground/40">Sign in with email or password to continue</p>
               </div>
 
               {signInError && (
@@ -291,7 +291,7 @@ export default function AuthPage() {
 
               <form onSubmit={handleSignIn} className="space-y-4">
                 <div>
-                  <label htmlFor="signin-email" className="block text-xs font-semibold text-white/50 uppercase tracking-wider mb-2">Email</label>
+                  <label htmlFor="signin-email" className="block text-xs font-semibold text-foreground/50 uppercase tracking-wider mb-2">Email</label>
                   <input
                     id="signin-email"
                     type="email"
@@ -301,13 +301,13 @@ export default function AuthPage() {
                     placeholder="name@company.com"
                     value={signInEmail}
                     onChange={(e) => setSignInEmail(e.target.value)}
-                    className="w-full px-4 py-2.5 bg-surface border border-border rounded-xl text-sm text-white focus:outline-none focus:border-accent-violet transition-all focus:ring-1 focus:ring-accent-violet disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full px-4 py-2.5 bg-surface border border-border rounded-xl text-sm text-foreground focus:outline-none focus:border-accent-violet transition-all focus:ring-1 focus:ring-accent-violet disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                 </div>
 
                 <div>
                   <div className="flex justify-between items-center mb-2">
-                    <label htmlFor="signin-password" className="block text-xs font-semibold text-white/50 uppercase tracking-wider">Password</label>
+                    <label htmlFor="signin-password" className="block text-xs font-semibold text-foreground/50 uppercase tracking-wider">Password</label>
                     <Link href="/forgot-password" className="text-xs text-accent-cyan hover:underline">Forgot password?</Link>
                   </div>
                   <div className="relative">
@@ -320,14 +320,14 @@ export default function AuthPage() {
                       placeholder="••••••••"
                       value={signInPassword}
                       onChange={(e) => setSignInPassword(e.target.value)}
-                      className="w-full pl-4 pr-10 py-2.5 bg-surface border border-border rounded-xl text-sm text-white focus:outline-none focus:border-accent-violet transition-all focus:ring-1 focus:ring-accent-violet disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full pl-4 pr-10 py-2.5 bg-surface border border-border rounded-xl text-sm text-foreground focus:outline-none focus:border-accent-violet transition-all focus:ring-1 focus:ring-accent-violet disabled:opacity-50 disabled:cursor-not-allowed"
                     />
                     <button
                       type="button"
                       disabled={!isSupabaseConfigured}
                       onClick={() => setShowSignInPassword(!showSignInPassword)}
                       suppressHydrationWarning
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white transition-colors disabled:opacity-50"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-foreground/40 hover:text-foreground transition-colors disabled:opacity-50"
                     >
                       {showSignInPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                     </button>
@@ -357,8 +357,8 @@ export default function AuthPage() {
           {activeTab === 'signup' && (
             <div className="animate-slide-in">
               <div className="mb-6">
-                <h2 className="text-2xl font-bold text-white mb-1">Create your account</h2>
-                <p className="text-xs text-white/40">Enter your details below to setup your profile</p>
+                <h2 className="text-2xl font-bold text-foreground mb-1">Create your account</h2>
+                <p className="text-xs text-foreground/40">Enter your details below to setup your profile</p>
               </div>
 
               {signUpError && (
@@ -376,7 +376,7 @@ export default function AuthPage() {
 
               <form onSubmit={handleSignUp} className="space-y-4">
                 <div>
-                  <label htmlFor="signup-name" className="block text-xs font-semibold text-white/50 uppercase tracking-wider mb-2">Full Name</label>
+                  <label htmlFor="signup-name" className="block text-xs font-semibold text-foreground/50 uppercase tracking-wider mb-2">Full Name</label>
                   <input
                     id="signup-name"
                     type="text"
@@ -386,12 +386,12 @@ export default function AuthPage() {
                     placeholder="Alex Johnson"
                     value={signUpName}
                     onChange={(e) => setSignUpName(e.target.value)}
-                    className="w-full px-4 py-2.5 bg-surface border border-border rounded-xl text-sm text-white focus:outline-none focus:border-accent-violet transition-all focus:ring-1 focus:ring-accent-violet disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full px-4 py-2.5 bg-surface border border-border rounded-xl text-sm text-foreground focus:outline-none focus:border-accent-violet transition-all focus:ring-1 focus:ring-accent-violet disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="signup-email" className="block text-xs font-semibold text-white/50 uppercase tracking-wider mb-2">Email</label>
+                  <label htmlFor="signup-email" className="block text-xs font-semibold text-foreground/50 uppercase tracking-wider mb-2">Email</label>
                   <input
                     id="signup-email"
                     type="email"
@@ -401,12 +401,12 @@ export default function AuthPage() {
                     placeholder="alex@company.com"
                     value={signUpEmail}
                     onChange={(e) => setSignUpEmail(e.target.value)}
-                    className="w-full px-4 py-2.5 bg-surface border border-border rounded-xl text-sm text-white focus:outline-none focus:border-accent-violet transition-all focus:ring-1 focus:ring-accent-violet disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full px-4 py-2.5 bg-surface border border-border rounded-xl text-sm text-foreground focus:outline-none focus:border-accent-violet transition-all focus:ring-1 focus:ring-accent-violet disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="signup-password" className="block text-xs font-semibold text-white/50 uppercase tracking-wider mb-2">Password</label>
+                  <label htmlFor="signup-password" className="block text-xs font-semibold text-foreground/50 uppercase tracking-wider mb-2">Password</label>
                   <div className="relative">
                     <input
                       id="signup-password"
@@ -417,14 +417,14 @@ export default function AuthPage() {
                       placeholder="•••••••• (Min 6 chars)"
                       value={signUpPassword}
                       onChange={(e) => setSignUpPassword(e.target.value)}
-                      className="w-full pl-4 pr-10 py-2.5 bg-surface border border-border rounded-xl text-sm text-white focus:outline-none focus:border-accent-violet transition-all focus:ring-1 focus:ring-accent-violet disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full pl-4 pr-10 py-2.5 bg-surface border border-border rounded-xl text-sm text-foreground focus:outline-none focus:border-accent-violet transition-all focus:ring-1 focus:ring-accent-violet disabled:opacity-50 disabled:cursor-not-allowed"
                     />
                     <button
                       type="button"
                       disabled={!isSupabaseConfigured}
                       onClick={() => setShowSignUpPassword(!showSignUpPassword)}
                       suppressHydrationWarning
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white transition-colors disabled:opacity-50"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-foreground/40 hover:text-foreground transition-colors disabled:opacity-50"
                     >
                       {showSignUpPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                     </button>
@@ -432,7 +432,7 @@ export default function AuthPage() {
                 </div>
 
                 <div>
-                  <label htmlFor="signup-confirm" className="block text-xs font-semibold text-white/50 uppercase tracking-wider mb-2">Confirm Password</label>
+                  <label htmlFor="signup-confirm" className="block text-xs font-semibold text-foreground/50 uppercase tracking-wider mb-2">Confirm Password</label>
                   <div className="relative">
                     <input
                       id="signup-confirm"
@@ -443,14 +443,14 @@ export default function AuthPage() {
                       placeholder="••••••••"
                       value={signUpConfirmPassword}
                       onChange={(e) => setSignUpConfirmPassword(e.target.value)}
-                      className="w-full pl-4 pr-10 py-2.5 bg-surface border border-border rounded-xl text-sm text-white focus:outline-none focus:border-accent-violet transition-all focus:ring-1 focus:ring-accent-violet disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full pl-4 pr-10 py-2.5 bg-surface border border-border rounded-xl text-sm text-foreground focus:outline-none focus:border-accent-violet transition-all focus:ring-1 focus:ring-accent-violet disabled:opacity-50 disabled:cursor-not-allowed"
                     />
                     <button
                       type="button"
                       disabled={!isSupabaseConfigured}
                       onClick={() => setShowSignUpConfirmPassword(!showSignUpConfirmPassword)}
                       suppressHydrationWarning
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white transition-colors disabled:opacity-50"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-foreground/40 hover:text-foreground transition-colors disabled:opacity-50"
                     >
                       {showSignUpConfirmPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                     </button>
@@ -482,7 +482,7 @@ export default function AuthPage() {
               <div className="w-full border-t border-border"></div>
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-card px-3 text-white/30 font-semibold tracking-wider">or continue with</span>
+              <span className="bg-card px-3 text-foreground/30 font-semibold tracking-wider">or continue with</span>
             </div>
           </div>
 
@@ -491,7 +491,7 @@ export default function AuthPage() {
             onClick={handleGoogleSignIn}
             disabled={!isSupabaseConfigured}
             suppressHydrationWarning
-            className="w-full flex items-center justify-center gap-3 px-4 py-2.5 bg-surface hover:bg-surface/80 border border-border text-sm text-white font-semibold rounded-xl transition-all hover:border-accent-violet active:scale-98 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full flex items-center justify-center gap-3 px-4 py-2.5 bg-surface hover:bg-surface/80 border border-border text-sm text-foreground font-semibold rounded-xl transition-all hover:border-accent-violet active:scale-98 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <svg className="h-4.5 w-4.5 shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
@@ -504,7 +504,7 @@ export default function AuthPage() {
 
           {/* Footer Navigation */}
           <div className="text-center mt-6">
-            <span className="text-xs text-white/30">
+            <span className="text-xs text-foreground/30">
               {activeTab === 'signin' ? (
                 <>
                   New to YUKTIFY?{' '}

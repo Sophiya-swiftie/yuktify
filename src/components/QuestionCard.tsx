@@ -92,8 +92,8 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({ question }) => {
       default:
         return {
           label: 'Todo',
-          colorClass: 'text-white/40 bg-surface/50 border-border hover:border-white/20',
-          icon: <Circle size={12} className="text-white/30" />
+          colorClass: 'text-foreground/40 bg-surface/50 border-border hover:border-white/20',
+          icon: <Circle size={12} className="text-foreground/30" />
         };
     }
   };
@@ -108,10 +108,10 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({ question }) => {
           <div>
             {/* Title & Bookmark Button */}
             <div className="flex items-center gap-3 mb-2">
-              <h2 className="text-xl font-bold text-white">{question.title}</h2>
+              <h2 className="text-xl font-bold text-foreground">{question.title}</h2>
               <button
                 onClick={() => toggleBookmark(question.id)}
-                className="p-1.5 rounded-lg text-white/40 hover:bg-white/5 hover:text-accent-violet transition-all focus:outline-none cursor-pointer"
+                className="p-1.5 rounded-lg text-foreground/40 hover:bg-foreground/5 hover:text-accent-violet transition-all focus:outline-none cursor-pointer"
                 title={isBookmarked(question.id) ? "Remove Bookmark" : "Bookmark Question"}
               >
                 <Bookmark 
@@ -126,7 +126,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({ question }) => {
 
             <div className="flex flex-wrap gap-2 items-center">
               <DifficultyBadge difficulty={question.difficulty} />
-              <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-surface border border-border text-white/60 uppercase tracking-wider">
+              <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-surface border border-border text-foreground/60 uppercase tracking-wider">
                 {question.role}
               </div>
 
@@ -203,8 +203,8 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({ question }) => {
                       key={statusOption}
                       onClick={() => handleStatusChange(statusOption)}
                       className={cn(
-                        "flex w-full items-center gap-2 rounded-lg px-2.5 py-1.5 text-left text-xs font-medium transition-colors cursor-pointer hover:bg-white/5",
-                        currentStatus === statusOption ? 'text-white bg-white/5' : 'text-white/60'
+                        "flex w-full items-center gap-2 rounded-lg px-2.5 py-1.5 text-left text-xs font-medium transition-colors cursor-pointer hover:bg-foreground/5",
+                        currentStatus === statusOption ? 'text-foreground bg-foreground/5' : 'text-foreground/60'
                       )}
                     >
                       {optionConfig.icon}
@@ -217,25 +217,25 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({ question }) => {
           </div>
         </div>
 
-        <div className="text-white/70 text-sm leading-relaxed whitespace-pre-wrap markdown-content prose prose-invert max-w-none">
+        <div className="text-foreground/70 text-sm leading-relaxed whitespace-pre-wrap markdown-content prose prose-invert max-w-none">
           <ReactMarkdown>{question.description}</ReactMarkdown>
         </div>
 
         {question.timeComplexity && question.spaceComplexity && (
           <div className="flex flex-wrap gap-4 mt-6">
-            <div className="flex items-center gap-2 text-xs text-white/50">
+            <div className="flex items-center gap-2 text-xs text-foreground/50">
               <Clock size={14} className="text-accent-violet" />
-              <span>Time: <span className="text-white/80">{question.timeComplexity}</span></span>
+              <span>Time: <span className="text-foreground/80">{question.timeComplexity}</span></span>
             </div>
-            <div className="flex items-center gap-2 text-xs text-white/50">
+            <div className="flex items-center gap-2 text-xs text-foreground/50">
               <Database size={14} className="text-accent-cyan" />
-              <span>Space: <span className="text-white/80">{question.spaceComplexity}</span></span>
+              <span>Space: <span className="text-foreground/80">{question.spaceComplexity}</span></span>
             </div>
-            <div className="flex items-center gap-2 text-xs text-white/50">
+            <div className="flex items-center gap-2 text-xs text-foreground/50">
               <Tag size={14} />
               <div className="flex gap-1.5">
                 {question.tags.map(tag => (
-                  <span key={tag} className="text-white/80 hover:text-accent-violet cursor-pointer">#{tag}</span>
+                  <span key={tag} className="text-foreground/80 hover:text-accent-violet cursor-pointer">#{tag}</span>
                 ))}
               </div>
             </div>
@@ -252,11 +252,11 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({ question }) => {
               onClick={() => toggleSection('approach')}
               className="w-full flex items-center justify-between p-4 hover:bg-surface/30 transition-colors"
             >
-              <span className="font-semibold text-sm uppercase tracking-widest text-white/60">Approach</span>
+              <span className="font-semibold text-sm uppercase tracking-widest text-foreground/60">Approach</span>
               {expandedSection === 'approach' ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
             </button>
             {expandedSection === 'approach' && (
-              <div className="p-6 bg-black/20 text-white/80 text-sm leading-relaxed border-t border-border animate-slide-in">
+              <div className="p-6 bg-black/20 text-foreground/80 text-sm leading-relaxed border-t border-border animate-slide-in">
                 {question.approach}
               </div>
             )}
@@ -272,14 +272,14 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({ question }) => {
             onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleSection('solution'); } }}
             className="w-full flex items-center justify-between p-4 hover:bg-surface/30 transition-colors cursor-pointer focus:outline-none"
           >
-            <span className="font-semibold text-sm uppercase tracking-widest text-white/60">
+            <span className="font-semibold text-sm uppercase tracking-widest text-foreground/60">
               {question.questionType === 'conceptual' ? 'Answer' : 'Solution'}
             </span>
             <div className="flex items-center gap-3">
               <button 
                 onClick={(e) => { e.stopPropagation(); copyToClipboard(); }}
                 suppressHydrationWarning
-                className="p-1.5 rounded-md hover:bg-white/10 text-white/40 hover:text-white transition-all focus:outline-none"
+                className="p-1.5 rounded-md hover:bg-foreground/10 text-foreground/40 hover:text-foreground transition-all focus:outline-none"
                 title="Copy Content"
               >
                 {copied ? <Check size={16} className="text-green-500" /> : <Copy size={16} />}
@@ -292,13 +292,13 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({ question }) => {
             <div className="p-0 border-t border-border animate-slide-in">
               {/* Conceptual Answer Rendering */}
               {question.questionType === 'conceptual' && question.conceptualAnswer && (
-                <div className="p-6 bg-black/20 text-white/80 text-sm leading-relaxed space-y-4">
+                <div className="p-6 bg-black/20 text-foreground/80 text-sm leading-relaxed space-y-4">
                   <div className="markdown-content prose prose-invert max-w-none">
                     <ReactMarkdown>{question.conceptualAnswer.explanation}</ReactMarkdown>
                   </div>
                   
                   {question.conceptualAnswer.keyPoints && question.conceptualAnswer.keyPoints.length > 0 && (
-                    <ul className="list-disc pl-5 space-y-2 text-white/70">
+                    <ul className="list-disc pl-5 space-y-2 text-foreground/70">
                       {question.conceptualAnswer.keyPoints.map((point, idx) => (
                         <li key={idx}><ReactMarkdown components={{p: ({ ...props }) => <span {...props} />}}>{point}</ReactMarkdown></li>
                       ))}
@@ -307,7 +307,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({ question }) => {
                   
                   {question.conceptualAnswer.example && (
                     <div className="mt-4 p-4 rounded-lg bg-surface border border-border">
-                      <div className="text-xs font-bold text-white/40 mb-2 uppercase tracking-wider">Example</div>
+                      <div className="text-xs font-bold text-foreground/40 mb-2 uppercase tracking-wider">Example</div>
                       <div className="markdown-content prose prose-invert max-w-none text-sm"><ReactMarkdown>{question.conceptualAnswer.example}</ReactMarkdown></div>
                     </div>
                   )}
@@ -317,7 +317,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({ question }) => {
               {/* Single Domain Language Solution (e.g., Frontend JS) */}
               {question.questionType === 'coding' && question.domainSolution && (
                 <div>
-                  <div className="px-4 py-2 bg-surface/50 border-b border-border text-xs font-medium text-white/60">
+                  <div className="px-4 py-2 bg-surface/50 border-b border-border text-xs font-medium text-foreground/60">
                     {question.domainSolution.languageLabel}
                   </div>
                   <div className="max-w-full overflow-x-auto">
@@ -343,7 +343,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({ question }) => {
                         "px-4 py-2 text-xs font-semibold rounded-t-lg transition-colors border-b-2",
                         selectedLang === 'c' 
                           ? "bg-black/20 text-accent-cyan border-accent-cyan" 
-                          : "text-white/40 hover:text-white/80 border-transparent hover:bg-white/5"
+                          : "text-foreground/40 hover:text-foreground/80 border-transparent hover:bg-foreground/5"
                       )}
                     >
                       C
@@ -354,7 +354,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({ question }) => {
                         "px-4 py-2 text-xs font-semibold rounded-t-lg transition-colors border-b-2",
                         selectedLang === 'java' 
                           ? "bg-black/20 text-accent-orange border-accent-orange" 
-                          : "text-white/40 hover:text-white/80 border-transparent hover:bg-white/5"
+                          : "text-foreground/40 hover:text-foreground/80 border-transparent hover:bg-foreground/5"
                       )}
                     >
                       Java
@@ -365,7 +365,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({ question }) => {
                         "px-4 py-2 text-xs font-semibold rounded-t-lg transition-colors border-b-2",
                         selectedLang === 'python' 
                           ? "bg-black/20 text-accent-violet border-accent-violet" 
-                          : "text-white/40 hover:text-white/80 border-transparent hover:bg-white/5"
+                          : "text-foreground/40 hover:text-foreground/80 border-transparent hover:bg-foreground/5"
                       )}
                     >
                       Python
@@ -395,11 +395,11 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({ question }) => {
               onClick={() => toggleSection('justification')}
               className="w-full flex items-center justify-between p-4 hover:bg-surface/30 transition-colors"
             >
-              <span className="font-semibold text-sm uppercase tracking-widest text-white/60">Justification</span>
+              <span className="font-semibold text-sm uppercase tracking-widest text-foreground/60">Justification</span>
               {expandedSection === 'justification' ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
             </button>
             {expandedSection === 'justification' && (
-              <div className="p-6 bg-black/20 text-white/80 text-sm leading-relaxed border-t border-border animate-slide-in">
+              <div className="p-6 bg-black/20 text-foreground/80 text-sm leading-relaxed border-t border-border animate-slide-in">
                 {question.justification}
               </div>
             )}

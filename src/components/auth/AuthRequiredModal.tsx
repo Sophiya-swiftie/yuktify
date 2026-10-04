@@ -26,7 +26,7 @@ export const AuthRequiredModal: React.FC = () => {
         {/* Close Button */}
         <button 
           onClick={closeAuthModal}
-          className="absolute right-4 top-4 rounded-lg p-1.5 text-white/40 hover:bg-white/10 hover:text-white transition-colors"
+          className="absolute right-4 top-4 rounded-lg p-1.5 text-foreground/40 hover:bg-foreground/10 hover:text-foreground transition-colors"
           aria-label="Close modal"
         >
           <X size={18} />
@@ -38,26 +38,26 @@ export const AuthRequiredModal: React.FC = () => {
         </div>
 
         {/* Title */}
-        <h3 className="text-center text-lg font-bold text-white mb-2">
+        <h3 className="text-center text-lg font-bold text-foreground mb-2">
           Authentication Required
         </h3>
 
         {/* Message */}
-        <p className="text-center text-sm text-white/60 mb-6 leading-relaxed">
+        <p className="text-center text-sm text-foreground/60 mb-6 leading-relaxed">
           {authModalMessage}
         </p>
 
         {/* Premium Benefits List */}
         <div className="space-y-3 mb-6 bg-black/20 p-4 rounded-xl border border-border/50 text-xs">
-          <div className="flex items-center gap-3 text-white/80">
+          <div className="flex items-center gap-3 text-foreground/80">
             <BookMarked size={16} className="text-accent-cyan shrink-0" />
             <span>Save and sync bookmarks across devices</span>
           </div>
-          <div className="flex items-center gap-3 text-white/80">
+          <div className="flex items-center gap-3 text-foreground/80">
             <Trophy size={16} className="text-accent-orange shrink-0" />
             <span>Track attempted and solved coding statuses</span>
           </div>
-          <div className="flex items-center gap-3 text-white/80">
+          <div className="flex items-center gap-3 text-foreground/80">
             <Sparkles size={16} className="text-accent-violet shrink-0" />
             <span>Personalize your prep roadmap with AI</span>
           </div>
@@ -73,7 +73,7 @@ export const AuthRequiredModal: React.FC = () => {
           </button>
           <button 
             onClick={closeAuthModal}
-            className="w-full py-2.5 text-sm font-semibold text-white/40 hover:text-white transition-colors rounded-xl hover:bg-white/5"
+            className="w-full py-2.5 text-sm font-semibold text-foreground/40 hover:text-foreground transition-colors rounded-xl hover:bg-foreground/5"
           >
             Continue as Guest
           </button>

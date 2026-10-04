@@ -34,7 +34,7 @@ export const CompanyAccordion: React.FC<CompanyAccordionProps> = ({
         suppressHydrationWarning
         className={cn(
           "w-full flex items-center justify-between px-3 py-2 rounded-lg transition-all text-sm",
-          isOpen ? "bg-surface text-white" : "text-white/60 hover:bg-surface/50 hover:text-white"
+          isOpen ? "bg-surface text-foreground" : "text-foreground/60 hover:bg-surface/50 hover:text-foreground"
         )}
       >
         <div className="flex items-center gap-3">
@@ -58,7 +58,7 @@ export const CompanyAccordion: React.FC<CompanyAccordionProps> = ({
                 "flex items-center gap-2 px-3 py-1.5 rounded-md text-xs transition-all",
                 activeRole === role.id 
                   ? "bg-accent-violet/10 text-accent-violet border border-accent-violet/20" 
-                  : "text-white/40 hover:text-white hover:bg-surface/30"
+                  : "text-foreground/40 hover:text-foreground hover:bg-surface/30"
               )}
             >
               {role.icon}

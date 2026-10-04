@@ -371,7 +371,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       }}
     >
       {loading ? (
-        <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#09090B] text-white">
+        <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#09090B] text-foreground">
           <div className="relative w-24 h-24 mb-6">
             {/* Pulsing Gradient glow behind logo */}
             <div className="absolute inset-0 rounded-full bg-accent-violet/20 blur-[20px] animate-pulse" style={{ animationDuration: '2s' }} />
@@ -396,7 +396,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
               <circle cx="50" cy="62" r="5" fill="#FFFFFF" />
             </svg>
           </div>
-          <p className="text-sm font-bold text-white/40 tracking-widest uppercase animate-pulse" style={{ animationDuration: '1.5s' }}>Loading YUKTIFY...</p>
+          <p className="text-sm font-bold text-foreground/40 tracking-widest uppercase animate-pulse" style={{ animationDuration: '1.5s' }}>Loading YUKTIFY...</p>
         </div>
       ) : (
         children
