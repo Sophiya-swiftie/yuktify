@@ -115,26 +115,11 @@ export const Header: React.FC = () => {
         <button
           onClick={toggleTheme}
           suppressHydrationWarning
-          className="rounded-full p-2 text-white/60 hover:bg-surface hover:text-white transition-colors cursor-pointer"
+          className="flex items-center justify-center w-9 h-9 rounded-full border border-border bg-surface text-white/70 hover:text-white hover:border-accent-violet transition-all cursor-pointer"
           title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
           aria-label="Toggle theme"
         >
-          <span className="relative block w-5 h-5">
-            {/* Sun icon — visible in dark mode */}
-            <Sun
-              size={20}
-              className={`absolute inset-0 transition-all duration-300 ${
-                theme === 'dark' ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-90 scale-50'
-              }`}
-            />
-            {/* Moon icon — visible in light mode */}
-            <Moon
-              size={20}
-              className={`absolute inset-0 transition-all duration-300 ${
-                theme === 'light' ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 rotate-90 scale-50'
-              }`}
-            />
-          </span>
+          {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
         </button>
 
         {/* User Auth Controls */}
